@@ -66,6 +66,7 @@ a {
   border: 1px solid #c4c4c4;
   border-radius: 25em;
   background-color: transparent;
+  color: #901c1c;
   transition: all;
 }
 .btn:hover {

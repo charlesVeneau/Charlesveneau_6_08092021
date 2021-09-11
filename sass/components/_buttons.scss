@@ -4,6 +4,7 @@
   border: 1px solid $color-border;
   border-radius: 25em;
   background-color: transparent;
+  color: $color-secondary;
   transition: all;
   &:hover {
     cursor: pointer;
