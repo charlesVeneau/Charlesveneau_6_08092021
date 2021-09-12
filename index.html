@@ -16,6 +16,8 @@
   </head>
   <body>
     <header class="header">
+      <!-- absolute link to the main content -->
+      <a href="#content" class="anchor__link">Passer au contenu</a>
       <a href=""
         ><img src="./public/img/fishEye_Logo.svg" alt="logo fishEye"
       /></a>
@@ -49,7 +51,34 @@
       </nav>
       <h1 class="header__title">Nos photographes</h1>
     </header>
-    <!-- absolute link to the main content -->
-    <a href="#content" class="anchor__link">Passer au contenu</a>
+    <main id="content">
+      <article class="card">
+        <a href="#" class="card__link">
+          <img
+            src="./public/img/Sample Photos/Photographers ID Photos/MimiKeel.jpg"
+            alt=""
+            class="card__img"
+          />
+          <h2 class="card__title">Mimi Keel</h2>
+        </a>
+        <p class="card__location">London, UK</p>
+        <p class="card__catchPhrase">Voir le beau dans le quotidien</p>
+        <p class="card__dailyRate">400€/jour</p>
+        <ul class="card__list">
+          <li class="card__listElt">
+            <button class="btn" type="button">#portrait</button>
+          </li>
+          <li class="card__listElt">
+            <button class="btn" type="button">#events</button>
+          </li>
+          <li class="card__listElt">
+            <button class="btn" type="button">##travel</button>
+          </li>
+          <li class="card__listElt">
+            <button class="btn" type="button">#animals</button>
+          </li>
+        </ul>
+      </article>
+    </main>
   </body>
 </html>

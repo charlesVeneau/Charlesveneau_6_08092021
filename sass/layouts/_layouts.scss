@@ -7,3 +7,8 @@
   margin-top: 6px;
   @include btn-primary;
 }
+
+#content {
+  max-width: 1440px;
+  padding: 42px 100px;
+}
