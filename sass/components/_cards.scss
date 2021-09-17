@@ -6,7 +6,8 @@
   margin-bottom: 50px;
   &__link {
     display: block;
-    &:hover {
+    &:hover,
+    &:focus {
       .card {
         &__img {
           transform: scale(1.04);

@@ -6,7 +6,8 @@
   background-color: transparent;
   color: $color-secondary;
   transition: all 0.2s ease-in;
-  &:hover {
+  &:hover,
+  &:focus {
     cursor: pointer;
     background: $color-secondary;
     color: white;

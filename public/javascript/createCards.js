@@ -20,6 +20,7 @@ function createCardLink(element) {
   var cardLink = document.createElement("a");
   cardLink.className = "card__link";
   cardLink.setAttribute("href", `./photographers/profil.html?id=${element.id}`);
+  cardLink.setAttribute("aria-label", `${element.name}`);
 
   var cardImg = document.createElement("img");
   cardImg.className = "card__img";
@@ -72,6 +73,10 @@ function createCardTagsList(list) {
     var listElt = document.createElement("li");
     listElt.className = "card__listElt";
 
+    var srOnly = document.createElement("span");
+    srOnly.className = "sr-only";
+    srOnly.innerText = `#${tag}`;
+
     var button = document.createElement("button");
     button.className = "btn";
     button.setAttribute("type", "button");
@@ -79,6 +84,7 @@ function createCardTagsList(list) {
     button.innerText = `#${tag}`;
 
     listElt.appendChild(button);
+    listElt.appendChild(srOnly);
     cardList.appendChild(listElt);
   });
 
