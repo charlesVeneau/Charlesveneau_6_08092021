@@ -1,9 +1,22 @@
 .card {
-  width: 210px;
+  min-width: 210px;
   text-align: center;
-  border-radius: 5px;
+  //   border-radius: 5px;
+  flex: 0 0 30%;
+  border: 1px solid pink;
+  margin-bottom: 50px;
   &__link {
     display: block;
+    &:hover {
+      .card {
+        &__img {
+          transform: scale(1.04);
+        }
+        &__title {
+          color: $color-secondary;
+        }
+      }
+    }
   }
   &__img {
     height: 200px;
@@ -11,11 +24,14 @@
     border-radius: 50%;
     object-fit: cover;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
+    transition: transform 0.2s ease-in;
   }
   &__title {
     color: $color-primary;
     font-size: 2em;
     margin-top: 0.33em;
+    transition: color 0.2s ease-in;
+    position: relative;
   }
   &__location {
     font-size: 0.7em;

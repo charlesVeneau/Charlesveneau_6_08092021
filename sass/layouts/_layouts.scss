@@ -11,4 +11,9 @@
 #content {
   max-width: 1440px;
   padding: 42px 100px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5%;
+  border: 2px dashed lime;
 }
