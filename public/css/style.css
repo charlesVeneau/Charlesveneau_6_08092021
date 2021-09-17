@@ -128,7 +128,7 @@ a {
   border-radius: 25em;
   background-color: transparent;
   color: #901c1c;
-  transition: all;
+  transition: all 0.2s ease-in;
 }
 .btn:hover {
   cursor: pointer;
@@ -140,7 +140,6 @@ a {
   min-width: 210px;
   text-align: center;
   flex: 0 0 30%;
-  border: 1px solid pink;
   margin-bottom: 50px;
 }
 .card__link {
@@ -192,8 +191,9 @@ a {
 }
 
 .anchor__link {
-  position: absolute;
-  top: 0;
+  position: fixed;
+  z-index: 10;
+  top: -40px;
   left: 50%;
   transform: translateX(-50%);
   padding: 3px 7px;
@@ -201,10 +201,15 @@ a {
   border-radius: 5px;
   background-color: #901c1c;
   color: #fff;
+  transition: all 0.4s ease;
 }
 .anchor__link:hover {
   background-color: #d3573c;
   color: #000;
+}
+.anchor__link.showAnchor {
+  transform: translate(-50%, 40px);
+  transition: all 0.4s ease;
 }
 
 #content {
@@ -214,7 +219,6 @@ a {
   display: flex;
   flex-wrap: wrap;
   gap: 5%;
-  border: 2px dashed lime;
 }
 
 @media screen and (max-width: 661px) {

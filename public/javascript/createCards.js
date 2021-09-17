@@ -9,7 +9,6 @@ function createCards(elements) {
     card.appendChild(createCardLink(element));
     card.appendChild(createCardInfo(element));
     card.appendChild(createCardTagsList(element.tags));
-    // console.log(element);
     //add the card to the content section in the body element
     contentElement.appendChild(card);
   });
@@ -20,13 +19,13 @@ function createCards(elements) {
 function createCardLink(element) {
   var cardLink = document.createElement("a");
   cardLink.className = "card__link";
-  cardLink.setAttribute("href", "#");
+  cardLink.setAttribute("href", `./photographers/profil.html?id=${element.id}`);
 
   var cardImg = document.createElement("img");
   cardImg.className = "card__img";
   cardImg.setAttribute(
     "src",
-    `./public/img/SamplePhotos/Photographers_ID_Photos/${element.portrait}`
+    `./public/img/SamplePhotos/Photographers_ID_Photos/low/${element.portrait}`
   );
   cardImg.setAttribute("alt", "");
   cardLink.appendChild(cardImg);
@@ -80,7 +79,6 @@ function createCardTagsList(list) {
     button.innerText = `#${tag}`;
 
     listElt.appendChild(button);
-
     cardList.appendChild(listElt);
   });
 

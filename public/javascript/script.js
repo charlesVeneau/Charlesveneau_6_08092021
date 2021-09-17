@@ -13,3 +13,13 @@ fetch("../../assets/fishEyeData.json")
   .catch(function (error) {
     console.log(error);
   });
+
+window.addEventListener("scroll", function (e) {
+  const anchorLink = document.querySelector(".anchor__link");
+  if (window.scrollY > 40) {
+    anchorLink.classList.add("showAnchor");
+  } else {
+    anchorLink.classList.remove("showAnchor");
+  }
+  //   console.log(window.scrollY);
+});
