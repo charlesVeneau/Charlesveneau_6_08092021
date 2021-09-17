@@ -12,7 +12,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./public/css/style.css" />
-    <script src="./public/javascript/script.js"></script>
+    <script type="module" src="./public/javascript/script.js"></script>
   </head>
   <body>
     <header class="header">
@@ -65,9 +65,11 @@
             Mimi Keel <span class="title__hover"></span>
           </h2>
         </a>
-        <p class="card__location">London, UK</p>
-        <p class="card__catchPhrase">Voir le beau dans le quotidien</p>
-        <p class="card__dailyRate">400€/jour</p>
+        <div class="card__info">
+          <p class="card__location">London, UK</p>
+          <p class="card__catchPhrase">Voir le beau dans le quotidien</p>
+          <p class="card__dailyRate">400€/jour</p>
+        </div>
         <ul class="card__list">
           <li class="card__listElt">
             <button class="btn" type="button">#portrait</button>

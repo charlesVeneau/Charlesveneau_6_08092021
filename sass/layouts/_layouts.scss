@@ -17,3 +17,10 @@
   gap: 5%;
   border: 2px dashed lime;
 }
+
+@media screen and (max-width: 661px) {
+  #content {
+    justify-content: center;
+    padding: 20px;
+  }
+}
