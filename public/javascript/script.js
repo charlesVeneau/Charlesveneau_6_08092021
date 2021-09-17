@@ -1,7 +1,7 @@
 import { createCards } from "./createCards.js";
 
 //fetch function that retrieve the photographers informations and set it to the photographers array
-fetch("../../assets/fishEyeData.json")
+fetch("assets/fishEyeData.json")
   .then(function (response) {
     if (response.ok) {
       return response.json();
