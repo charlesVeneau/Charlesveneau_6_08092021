@@ -1,5 +1,7 @@
 import { createCards } from "./createCards.js";
 
+var photographers = new Array();
+
 //fetch function that retrieve the photographers informations and set it to the photographers array
 fetch("assets/fishEyeData.json")
   .then(function (response) {
@@ -8,7 +10,8 @@ fetch("assets/fishEyeData.json")
     }
   })
   .then(function (value) {
-    createCards(value.photographers);
+    photographers = value.photographers;
+    createCards(photographers);
   })
   .catch(function (error) {
     console.log(error);
