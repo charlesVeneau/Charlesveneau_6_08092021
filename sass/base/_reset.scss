@@ -12,8 +12,9 @@ html {
 }
 
 body {
-  margin: 0;
-  padding: 0;
+  max-width: 1440px;
+  padding: 0 100px;
+  margin: 0 auto;
   font-size: 18px;
   font-family: "DM Sans", sans-serif;
   position: relative;
