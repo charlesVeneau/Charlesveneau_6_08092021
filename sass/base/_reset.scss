@@ -6,6 +6,9 @@
   &::after {
     box-sizing: border-box;
   }
+  &:focus {
+    outline-color: $color-secondary;
+  }
 }
 html {
   scroll-behavior: smooth;

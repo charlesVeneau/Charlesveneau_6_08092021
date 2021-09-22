@@ -6,10 +6,13 @@
   background-color: transparent;
   color: $color-secondary;
   transition: all 0.2s ease-in;
-  &:hover,
-  &:focus {
+  &:hover {
     cursor: pointer;
     background: $color-secondary;
     color: white;
+  }
+
+  &::before {
+    content: "#";
   }
 }

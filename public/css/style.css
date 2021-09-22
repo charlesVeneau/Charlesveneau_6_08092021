@@ -7,6 +7,9 @@
 *::after {
   box-sizing: border-box;
 }
+*:focus {
+  outline-color: #901c1c;
+}
 
 html {
   scroll-behavior: smooth;
@@ -78,12 +81,6 @@ a {
   max-width: 100%;
   transition: transform 0.2s ease-in;
 }
-.header__title {
-  position: absolute;
-  top: 30px;
-  right: 100px;
-  white-space: nowrap;
-}
 
 .navbar {
   width: 68%;
@@ -100,26 +97,17 @@ a {
 .navbar__elt + .navbar__elt {
   margin-left: 5px;
 }
+.navbar .isActive {
+  background-color: #901c1c;
+  color: #ffffff;
+}
 
-@media screen and (max-width: 1239px) {
-  .header__title {
-    font-size: 1.6em;
-  }
-}
-@media screen and (max-width: 1200px) {
-  .header__title {
-    font-size: 1.4em;
-  }
-}
 @media screen and (max-width: 1156px) {
   .header {
     width: 72%;
   }
   .header__link img {
     width: 150px;
-  }
-  .header__title {
-    right: 100px;
   }
 }
 @media screen and (max-width: 767px) {
@@ -130,12 +118,6 @@ a {
   .header {
     padding: 30px 22px;
     width: 100%;
-  }
-  .header__title {
-    top: 38px;
-    right: 18px;
-    font-size: 1em;
-    order: 2;
   }
 
   .navbar {
@@ -161,10 +143,13 @@ a {
   color: #901c1c;
   transition: all 0.2s ease-in;
 }
-.btn:hover, .btn:focus {
+.btn:hover {
   cursor: pointer;
   background: #901c1c;
   color: white;
+}
+.btn::before {
+  content: "#";
 }
 
 .card {
@@ -220,6 +205,11 @@ a {
 .card__listElt + .card__listElt {
   margin-left: 5px;
 }
+.card__listElt .btn:hover {
+  cursor: default;
+  background-color: #fff;
+  color: #901c1c;
+}
 
 .anchor__link {
   position: fixed;
@@ -247,14 +237,54 @@ a {
   max-width: 1440px;
   padding: 42px 100px;
   margin: 0 auto;
+}
+
+.section {
   display: flex;
   flex-wrap: wrap;
   gap: 5%;
 }
 
+.content__title {
+  position: absolute;
+  top: 30px;
+  right: 100px;
+  white-space: nowrap;
+}
+
+@media screen and (max-width: 1239px) {
+  .content__title {
+    font-size: 1.6em;
+  }
+}
+@media screen and (max-width: 1200px) {
+  .content__title {
+    font-size: 1.4em;
+  }
+}
+@media screen and (max-width: 1156px) {
+  .content {
+    width: 72%;
+  }
+  .content__title {
+    right: 100px;
+  }
+}
 @media screen and (max-width: 1114px) {
   #content {
     justify-content: center;
+  }
+}
+@media screen and (max-width: 767px) {
+  .content {
+    padding: 30px 22px;
+    width: 100%;
+  }
+  .content__title {
+    top: 38px;
+    right: 18px;
+    font-size: 1em;
+    order: 2;
   }
 }
 @media screen and (max-width: 661px) {

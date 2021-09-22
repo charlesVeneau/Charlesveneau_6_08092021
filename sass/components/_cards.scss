@@ -56,5 +56,12 @@
     + .card__listElt {
       margin-left: 5px;
     }
+    & .btn {
+      &:hover {
+        cursor: default;
+        background-color: #fff;
+        color: $color-secondary;
+      }
+    }
   }
 }

@@ -1,7 +1,8 @@
 function createCards(elements) {
   //Get the DOM content element
-  var contentElement = document.getElementById("content");
+  var sectionElt = document.querySelector(".section");
   //loop through all the photographers to create a card
+  sectionElt.innerHTML = "";
   elements.forEach(function (element) {
     var card = document.createElement("article");
     card.className = "card";
@@ -10,7 +11,7 @@ function createCards(elements) {
     card.appendChild(createCardInfo(element));
     card.appendChild(createCardTagsList(element.tags));
     //add the card to the content section in the body element
-    contentElement.appendChild(card);
+    sectionElt.appendChild(card);
   });
 }
 
@@ -75,13 +76,13 @@ function createCardTagsList(list) {
 
     var srOnly = document.createElement("span");
     srOnly.className = "sr-only";
-    srOnly.innerText = `#${tag}`;
+    srOnly.innerText = `${tag}`;
 
     var button = document.createElement("button");
     button.className = "btn";
     button.setAttribute("type", "button");
 
-    button.innerText = `#${tag}`;
+    button.innerText = `${tag}`;
 
     listElt.appendChild(button);
     listElt.appendChild(srOnly);
