@@ -1,7 +1,7 @@
 import { createCards } from "./createCards.js";
 
 var photographers = new Array();
-var selectedTags = new Array();
+var selectedTag = new Array();
 
 //fetch function that retrieve the photographers informations and set it to the photographers array
 fetch("assets/fishEyeData.json")
@@ -37,17 +37,19 @@ tagsList.forEach(function (elt) {
   //Listening to the tags click to filter the photo by theire tags.
   elt.addEventListener("click", (e) => {
     var tag = e.target;
+    tagsList.forEach((elt) => {
+      if (elt.classList.contains("isActive") && elt != tag) {
+        elt.classList.remove("isActive");
+      }
+    });
     tag.classList.toggle("isActive");
     if (tag.classList.contains("isActive")) {
-      selectedTags.push(tag.innerText.toLowerCase());
+      selectedTag = tag.innerText.toLowerCase();
     } else {
-      selectedTags = selectedTags.filter((elt) => {
-        return elt != tag.innerText.toLowerCase();
-      });
+      selectedTag = "";
     }
-    console.log(selectedTags);
-    if (selectedTags.length > 0) {
-      filterPhotographers(selectedTags);
+    if (selectedTag.length > 0) {
+      filterPhotographers(selectedTag);
     } else {
       createCards(photographers);
     }
@@ -60,6 +62,5 @@ function filterPhotographers(selectedTags) {
       return selectedTags.includes(tag);
     });
   });
-  console.log(selectedPhotographers);
   createCards(selectedPhotographers);
 }
