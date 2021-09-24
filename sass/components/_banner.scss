@@ -1,0 +1,45 @@
+.banner {
+  display: flex;
+  justify-content: space-between;
+  background-color: $color-quaternary;
+  padding: 2.8em;
+  gap: 2.3em;
+  &__infos {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  &__title {
+    color: $color-primary;
+    font-size: 3.5em;
+  }
+  &__location {
+    font-size: 1.5em;
+  }
+  &__catchPhrase {
+    color: $color-tertiary;
+  }
+  &__img {
+    @include roundImg;
+  }
+  &__aside {
+    flex-grow: 1;
+  }
+  &__btn {
+    padding: 1.5em 1em;
+    border: none;
+    font-weight: 700;
+    transition: all 0.2s ease-in;
+    cursor: pointer;
+    @include btn-primary;
+  }
+  &__list {
+    display: flex;
+    justify-content: flex-start;
+    gap: 5px;
+    .btn {
+      font-size: 1em;
+    }
+  }
+}

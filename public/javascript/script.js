@@ -32,25 +32,35 @@ window.addEventListener("scroll", function (e) {
 //select all the tags in the header
 var tagsList = document.querySelectorAll(".navbar__elt .btn");
 
+var cardTags = document.querySelectorAll(".card__listElt");
+
+//loop through all the card tags and listen to the clicks
+cardTags.forEach(function (elt) {
+  //Listening to the tags click to filter the photo by theire tags.
+  elt.addEventListener("click", tagSelecion);
+});
+
 //loop through all the tags and listen to the clicks
 tagsList.forEach(function (elt) {
   //Listening to the tags click to filter the photo by theire tags.
-  elt.addEventListener("click", (e) => {
-    var tag = e.target;
-    tagsList.forEach((elt) => {
-      if (elt.classList.contains("isActive") && elt != tag) {
-        elt.classList.remove("isActive");
-      }
-    });
-    tag.classList.toggle("isActive");
-    if (tag.classList.contains("isActive"))
-      selectedTag = tag.innerText.toLowerCase();
-    else selectedTag = "";
-
-    if (selectedTag.length > 0) filterPhotographers(selectedTag);
-    else createCards(photographers);
-  });
+  elt.addEventListener("click", tagSelecion);
 });
+
+function tagSelecion(e) {
+  var tag = e.target;
+  console.log(tag);
+  tagsList.forEach((elt) => {
+    if (elt.classList.contains("isActive") && elt != tag)
+      elt.classList.remove("isActive");
+  });
+  tag.classList.toggle("isActive");
+  if (tag.classList.contains("isActive"))
+    selectedTag = tag.innerText.toLowerCase();
+  else selectedTag = "";
+
+  if (selectedTag.length > 0) filterPhotographers(selectedTag);
+  else createCards(photographers);
+}
 
 function filterPhotographers(selectedTags) {
   const selectedPhotographers = photographers.filter((photographer) => {
