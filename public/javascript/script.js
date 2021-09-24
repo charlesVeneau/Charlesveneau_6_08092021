@@ -43,16 +43,12 @@ tagsList.forEach(function (elt) {
       }
     });
     tag.classList.toggle("isActive");
-    if (tag.classList.contains("isActive")) {
+    if (tag.classList.contains("isActive"))
       selectedTag = tag.innerText.toLowerCase();
-    } else {
-      selectedTag = "";
-    }
-    if (selectedTag.length > 0) {
-      filterPhotographers(selectedTag);
-    } else {
-      createCards(photographers);
-    }
+    else selectedTag = "";
+
+    if (selectedTag.length > 0) filterPhotographers(selectedTag);
+    else createCards(photographers);
   });
 });
 
