@@ -161,6 +161,9 @@ a {
 .card__link {
   display: block;
 }
+.card__link:hover, .card__link:focus {
+  cursor: pointer;
+}
 .card__link:hover .card__img, .card__link:focus .card__img {
   transform: scale(1.04);
 }

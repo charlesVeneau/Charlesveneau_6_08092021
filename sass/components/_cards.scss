@@ -8,6 +8,7 @@
     display: block;
     &:hover,
     &:focus {
+      cursor: pointer;
       .card {
         &__img {
           transform: scale(1.04);
