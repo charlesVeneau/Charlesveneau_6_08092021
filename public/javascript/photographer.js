@@ -21,8 +21,8 @@ fetch("../../assets/fishEyeData.json")
     document.title += ` | ${photographer.name}`;
 
     createBanner(photographer);
+    console.log(photographerContent);
     createGallery(photographerContent);
-    // console.log(photographerContent);
   })
   .catch(function (error) {
     console.log(error);
@@ -67,6 +67,41 @@ function createTagsList(tag) {
   return listElt;
 }
 
-function createGallery(content) {
-  console.log(content);
+function createGallery(medias) {
+  var firstName = photographer.name.split(" ", 1)[0];
+  var gallery = document.querySelector(".gallery");
+
+  medias.forEach((media) => {
+    var card = document.createElement("div");
+    card.className = "gallery__card";
+
+    var cardImg = document.createElement("img");
+    cardImg.className = "gallery__img";
+    if (media.image.split(".")[1] === "jpg") {
+      cardImg.setAttribute(
+        "src",
+        `/public/img/SamplePhotos/${firstName}/${media.image}`
+      );
+    }
+
+    var cardInfo = document.createElement("div");
+    cardInfo.className = "gallery__info";
+
+    var cardTitle = document.createElement("p");
+    cardTitle.className = "gallery__title";
+    cardTitle.innerText = `${media.title}`;
+
+    cardInfo.appendChild(cardTitle);
+
+    var cardLikes = document.createElement("p");
+    cardLikes.className = "gallery__likes";
+    cardLikes.innerText = `${media.likes}`;
+
+    cardInfo.appendChild(cardLikes);
+
+    card.appendChild(cardImg);
+    card.appendChild(cardInfo);
+
+    gallery.appendChild(card);
+  });
 }
