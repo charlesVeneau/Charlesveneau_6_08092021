@@ -72,16 +72,29 @@ function createGallery(medias) {
   var gallery = document.querySelector(".gallery");
 
   medias.forEach((media) => {
-    var card = document.createElement("div");
+    var card = document.createElement("article");
     card.className = "gallery__card";
 
-    var cardImg = document.createElement("img");
-    cardImg.className = "gallery__img";
-    if (media.image.split(".")[1] === "jpg") {
+    if (media.image) {
+      var cardImg = document.createElement("img");
+      cardImg.className = "gallery__img";
       cardImg.setAttribute(
         "src",
-        `/public/img/SamplePhotos/${firstName}/${media.image}`
+        `/public/img/SamplePhotos/${firstName}/low/${media.image}`
       );
+
+      card.appendChild(cardImg);
+    } else if (media.video) {
+      var cardVideo = document.createElement("video");
+      cardVideo.className = "gallery__img";
+      var videoSrc = document.createElement("source");
+      videoSrc.setAttribute(
+        "src",
+        `/public/img/SamplePhotos/${firstName}/${media.video}`
+      );
+      videoSrc.setAttribute("type", "video/mp4");
+      cardVideo.appendChild(videoSrc);
+      card.appendChild(cardVideo);
     }
 
     var cardInfo = document.createElement("div");
@@ -95,11 +108,13 @@ function createGallery(medias) {
 
     var cardLikes = document.createElement("p");
     cardLikes.className = "gallery__likes";
-    cardLikes.innerText = `${media.likes}`;
+    cardLikes.insertAdjacentHTML(
+      "beforeend",
+      `<span class="likes__num">${media.likes}</span><i class='fas fa-heart'></i>`
+    );
 
     cardInfo.appendChild(cardLikes);
 
-    card.appendChild(cardImg);
     card.appendChild(cardInfo);
 
     gallery.appendChild(card);

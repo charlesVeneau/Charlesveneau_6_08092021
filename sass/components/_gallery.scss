@@ -1,7 +1,24 @@
 .gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1em;
+  &__card {
+    max-width: 350px;
+    margin-bottom: 1em;
+  }
   &__img {
     width: 350px;
     height: 300px;
     object-fit: cover;
+    border-radius: 5px;
   }
+  &__info {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.likes__num {
+  margin-right: 0.35em;
 }

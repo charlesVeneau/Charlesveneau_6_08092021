@@ -73,7 +73,6 @@ a {
   flex-wrap: wrap;
   width: 72%;
   padding-top: 30px;
-  padding-left: 100px;
 }
 .header__link:hover img {
   transform: scale(1.03);
@@ -268,11 +267,30 @@ a {
   margin-left: 5px;
 }
 
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1em;
+}
+.gallery__card {
+  max-width: 350px;
+  margin-bottom: 1em;
+}
 .gallery__img {
   width: 350px;
   height: 300px;
   -o-object-fit: cover;
      object-fit: cover;
+  border-radius: 5px;
+}
+.gallery__info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.likes__num {
+  margin-right: 0.35em;
 }
 
 .anchor__link {
@@ -300,7 +318,7 @@ a {
 
 #content {
   max-width: 1440px;
-  padding: 42px 100px;
+  padding: 42px 0px;
   margin: 0 auto;
 }
 
