@@ -288,9 +288,36 @@ a {
   display: flex;
   justify-content: space-between;
 }
+.gallery__likes .fa-heart {
+  cursor: pointer;
+  transition: all 200ms ease-in;
+}
+.gallery__likes .fa-heart:hover {
+  transform: scale(1.15);
+}
 
 .likes__num {
   margin-right: 0.35em;
+}
+
+.footer {
+  text-align: right;
+  position: fixed;
+  bottom: 0;
+  right: 2em;
+}
+.footer__list {
+  display: flex;
+  justify-content: flex-end;
+  background-color: #db8876;
+  border-radius: 5px 5px 0 0;
+  color: #000000;
+  font-size: 1.33em;
+  padding: 0.5em 1.2em;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  gap: 3em;
 }
 
 .anchor__link {

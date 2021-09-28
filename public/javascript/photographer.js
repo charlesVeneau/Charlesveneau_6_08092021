@@ -23,6 +23,8 @@ fetch("../../assets/fishEyeData.json")
     createBanner(photographer);
     console.log(photographerContent);
     createGallery(photographerContent);
+    getLikes(photographerContent);
+    getRate(photographer);
   })
   .catch(function (error) {
     console.log(error);
@@ -110,7 +112,7 @@ function createGallery(medias) {
     cardLikes.className = "gallery__likes";
     cardLikes.insertAdjacentHTML(
       "beforeend",
-      `<span class="likes__num">${media.likes}</span><i class='fas fa-heart'></i>`
+      `<span class="likes__num">${media.likes}</span><i class='fas fa-heart' arial-label="likes"></i>`
     );
 
     cardInfo.appendChild(cardLikes);
@@ -119,4 +121,15 @@ function createGallery(medias) {
 
     gallery.appendChild(card);
   });
+}
+
+function getLikes(content) {
+  var likesElt = document.querySelector(".footer__likes");
+  var likes = content.reduce((total, elt) => total + elt.likes, 0);
+  likesElt.innerText = likes;
+}
+
+function getRate(photographer) {
+  var rateElt = document.querySelector(".footer__rate");
+  rateElt.innerText = photographer.price;
 }

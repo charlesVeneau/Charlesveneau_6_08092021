@@ -17,6 +17,15 @@
     display: flex;
     justify-content: space-between;
   }
+  &__likes {
+    .fa-heart {
+      cursor: pointer;
+      transition: all 200ms ease-in;
+      &:hover {
+        transform: scale(1.15);
+      }
+    }
+  }
 }
 
 .likes__num {
