@@ -1,3 +1,4 @@
+import { createBanner } from "/public/javascript/createBanner.js";
 //retrieve the id of the photagrapher that is stored in the URL params
 const urlId = new URLSearchParams(window.location.search).get("id");
 //Create a variable to store the photographer's information
@@ -19,55 +20,15 @@ fetch("../../assets/fishEyeData.json")
     });
     //put the photographer name in the head title
     document.title += ` | ${photographer.name}`;
-
+    console.log(photographerContent[0]);
     createBanner(photographer);
-    console.log(photographerContent);
     createGallery(photographerContent);
-    getLikes(photographerContent);
+    getTotalLikes(photographerContent);
     getRate(photographer);
   })
   .catch(function (error) {
     console.log(error);
   });
-
-function createBanner(photographer) {
-  document.querySelector(".banner__title").innerText = photographer.name;
-  document.querySelector(
-    ".banner__location"
-  ).innerText = `${photographer.city}, ${photographer.country}`;
-  document.querySelector(".banner__catchPhrase").innerText =
-    photographer.tagline;
-  document
-    .querySelector(".banner__img")
-    .setAttribute(
-      "src",
-      `/public/img/SamplePhotos/Photographers_ID_Photos/low/${photographer.portrait}`
-    );
-  document.querySelector(".banner__img").setAttribute("alt", photographer.name);
-  photographer.tags.forEach(function (tag) {
-    document.querySelector(".banner__list").appendChild(createTagsList(tag));
-  });
-}
-
-function createTagsList(tag) {
-  var listElt = document.createElement("li");
-  listElt.className = "banner__listElt";
-
-  var srOnly = document.createElement("span");
-  srOnly.className = "sr-only";
-  srOnly.innerText = `${tag}`;
-
-  var button = document.createElement("button");
-  button.className = "btn";
-  button.setAttribute("type", "button");
-
-  button.innerText = `${tag}`;
-
-  listElt.appendChild(button);
-  listElt.appendChild(srOnly);
-
-  return listElt;
-}
 
 function createGallery(medias) {
   var firstName = photographer.name.split(" ", 1)[0];
@@ -76,6 +37,7 @@ function createGallery(medias) {
   medias.forEach((media) => {
     var card = document.createElement("article");
     card.className = "gallery__card";
+    card.id = media.photographerId;
 
     if (media.image) {
       var cardImg = document.createElement("img");
@@ -101,6 +63,7 @@ function createGallery(medias) {
 
     var cardInfo = document.createElement("div");
     cardInfo.className = "gallery__info";
+    cardInfo.id = media.id;
 
     var cardTitle = document.createElement("p");
     cardTitle.className = "gallery__title";
@@ -112,7 +75,9 @@ function createGallery(medias) {
     cardLikes.className = "gallery__likes";
     cardLikes.insertAdjacentHTML(
       "beforeend",
-      `<span class="likes__num">${media.likes}</span><i class='fas fa-heart' arial-label="likes"></i>`
+      `<span class="likes__num">${getLikes(
+        media
+      )}</span><i class='fas fa-heart' arial-label="likes"></i>`
     );
 
     cardInfo.appendChild(cardLikes);
@@ -121,9 +86,14 @@ function createGallery(medias) {
 
     gallery.appendChild(card);
   });
+  likesListener();
 }
 
 function getLikes(content) {
+  return content.likes;
+}
+
+function getTotalLikes(content) {
   var likesElt = document.querySelector(".footer__likes");
   var likes = content.reduce((total, elt) => total + elt.likes, 0);
   likesElt.innerText = likes;
@@ -132,4 +102,25 @@ function getLikes(content) {
 function getRate(photographer) {
   var rateElt = document.querySelector(".footer__rate");
   rateElt.innerText = photographer.price;
+}
+
+function likesListener() {
+  var likesIcons = document.querySelectorAll(".gallery__card .fa-heart");
+  likesIcons.forEach((elt) => {
+    elt.addEventListener("click", (e) => {
+      let photoId = parseInt(e.target.parentNode.parentNode.id);
+      let photo = photographerContent.filter((photo) => {
+        return photo.id === photoId;
+      })[0];
+      if (photo.isLiked) {
+        photo.likes--;
+        photo.isLiked = false;
+        console.log(photographerContent[0]);
+      } else {
+        photo.likes++;
+        photo.isLiked = true;
+        console.log(photographerContent[0]);
+      }
+    });
+  });
 }

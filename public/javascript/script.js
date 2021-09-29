@@ -36,13 +36,13 @@ var cardTags = document.querySelectorAll(".card__listElt");
 
 //loop through all the card tags and listen to the clicks
 cardTags.forEach(function (elt) {
-  //Listening to the tags click to filter the photo by theire tags.
+  //Listening to the tags click to filter the photographers by theire tags.
   elt.addEventListener("click", tagSelecion);
 });
 
 //loop through all the tags and listen to the clicks
 tagsList.forEach(function (elt) {
-  //Listening to the tags click to filter the photo by theire tags.
+  //Listening to the tags click to filter the photographers by theire tags.
   elt.addEventListener("click", tagSelecion);
 });
 
