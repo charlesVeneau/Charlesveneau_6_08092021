@@ -20,10 +20,9 @@ fetch("../../assets/fishEyeData.json")
     });
     //put the photographer name in the head title
     document.title += ` | ${photographer.name}`;
-    console.log(photographerContent[0]);
     createBanner(photographer);
     createGallery(photographerContent);
-    getTotalLikes(photographerContent);
+    getTotalLikes();
     getRate(photographer);
   })
   .catch(function (error) {
@@ -93,9 +92,9 @@ function getLikes(content) {
   return content.likes;
 }
 
-function getTotalLikes(content) {
+function getTotalLikes() {
   var likesElt = document.querySelector(".footer__likes");
-  var likes = content.reduce((total, elt) => total + elt.likes, 0);
+  var likes = photographerContent.reduce((total, elt) => total + elt.likes, 0);
   likesElt.innerText = likes;
 }
 
@@ -115,12 +114,13 @@ function likesListener() {
       if (photo.isLiked) {
         photo.likes--;
         photo.isLiked = false;
-        console.log(photographerContent[0]);
       } else {
         photo.likes++;
         photo.isLiked = true;
-        console.log(photographerContent[0]);
       }
+      e.target.parentNode.querySelector(".likes__num").innerText =
+        getLikes(photo);
+      getTotalLikes();
     });
   });
 }
