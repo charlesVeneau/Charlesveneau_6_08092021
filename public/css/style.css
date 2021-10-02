@@ -66,6 +66,16 @@ a {
   border: 0;
 }
 
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -137,9 +147,15 @@ a {
 .banner {
   display: flex;
   justify-content: space-between;
+  flex-direction: row-reverse;
   background-color: #fafafa;
   padding: 2.8em;
   gap: 2.3em;
+}
+.banner__aside {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 .banner__infos {
   display: flex;
@@ -179,7 +195,7 @@ a {
   color: #fff;
   font-family: "DM Sans", sans-serif;
 }
-.banner__btn:hover {
+.banner__btn:hover, .banner__btn:focus {
   background-color: #d3573c;
   color: #000;
 }
@@ -268,10 +284,15 @@ a {
 }
 
 .gallery {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 1em;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1em 5em;
+  margin: 2em auto;
+}
+.gallery__btn {
+  border: none;
+  background: transparent;
+  padding: 0;
 }
 .gallery__card {
   max-width: 350px;
@@ -283,30 +304,41 @@ a {
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 5px;
+  transition: all 0.2s ease-in;
+}
+.gallery__img:hover {
+  cursor: pointer;
+  filter: grayscale(100%);
+  transform: scale(1.02);
 }
 .gallery__info {
   display: flex;
   justify-content: space-between;
 }
-.gallery__likes .fa-heart {
-  cursor: pointer;
-  transition: all 200ms ease-in;
-}
-.gallery__likes .fa-heart:hover {
-  transform: scale(1.15);
-}
 
 .likes__num {
   margin-right: 0.35em;
 }
+.likes__btn {
+  border: none;
+  color: #901c1c;
+  padding: 0;
+  background-color: transparent;
+  font-size: 1em;
+  cursor: pointer;
+  transition: all 200ms ease-in;
+}
+.likes__btn:hover, .likes__btn:focus {
+  transform: scale(1.15);
+}
 
-.footer {
+.tab {
   text-align: right;
   position: fixed;
   bottom: 0;
   right: 2em;
 }
-.footer__list {
+.tab__list {
   display: flex;
   justify-content: flex-end;
   background-color: #db8876;
@@ -318,6 +350,24 @@ a {
   width: -moz-fit-content;
   width: fit-content;
   gap: 3em;
+}
+
+.filter {
+  margin: 1em 0;
+}
+.filter__title {
+  font-weight: bold;
+  color: #000;
+  margin-right: 1em;
+}
+
+#filter__box {
+  background-color: #901c1c;
+  border: none;
+  color: #fff;
+  font-size: 1em;
+  padding: 1.7em 1em;
+  border-radius: 5px;
 }
 
 .anchor__link {
@@ -334,7 +384,7 @@ a {
   font-family: "DM Sans", sans-serif;
   transition: all 0.4s ease;
 }
-.anchor__link:hover {
+.anchor__link:hover, .anchor__link:focus {
   background-color: #d3573c;
   color: #000;
 }

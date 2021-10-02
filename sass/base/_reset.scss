@@ -64,3 +64,13 @@ a {
   white-space: nowrap;
   border: 0;
 }
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+select::-ms-expand {
+  display: none;
+}

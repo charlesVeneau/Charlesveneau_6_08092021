@@ -26,32 +26,35 @@
     </header>
     <main id="content">
       <section class="banner">
+        <aside class="banner__aside">
+          <button class="banner__btn">Contactez-moi</button>
+          <img src="" alt="" class="banner__img" />
+        </aside>
         <article class="banner__infos">
           <h1 class="banner__title"></h1>
           <p class="banner__location"></p>
           <p class="banner__catchPhrase"></p>
           <ul class="banner__list"></ul>
         </article>
-        <aside class="banner__aside">
-          <button class="banner__btn">Contactez-moi</button>
-        </aside>
-        <img src="" alt="" class="banner__img" />
       </section>
       <section class="filter">
-        <label for="filter__box">Trier par</label>
+        <label for="filter__box" class="filter__title">Trier par</label>
+        <select name="filter__box" id="filter__box">
+          <option value="popularity" class="filter__option">Popularité</option>
+          <option value="date" class="filter__option">Date</option>
+          <option value="title" class="filter__option">Titre</option>
+        </select>
       </section>
       <section class="gallery"></section>
     </main>
-    <footer class="footer">
-      <ul class="footer__list">
-        <li class="footer__listElt">
-          <span class="footer__likes"></span>
+    <section class="tab">
+      <ul class="tab__list">
+        <li class="tab__listElt">
+          <span class="tab__likes"></span>
           <i class="fas fa-heart"></i>
         </li>
-        <li class="footer__listElt">
-          <span class="footer__rate"></span>€ / jour
-        </li>
+        <li class="tab__listElt"><span class="tab__rate"></span>€ / jour</li>
       </ul>
-    </footer>
+    </section>
   </body>
 </html>

@@ -1,8 +1,13 @@
 .gallery {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 1em;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1em 5em;
+  margin: 2em auto;
+  &__btn {
+    border: none;
+    background: transparent;
+    padding: 0;
+  }
   &__card {
     max-width: 350px;
     margin-bottom: 1em;
@@ -12,22 +17,34 @@
     height: 300px;
     object-fit: cover;
     border-radius: 5px;
+    transition: all 0.2s ease-in;
+    &:hover {
+      cursor: pointer;
+      filter: grayscale(100%);
+      transform: scale(1.02);
+    }
   }
   &__info {
     display: flex;
     justify-content: space-between;
   }
-  &__likes {
-    .fa-heart {
-      cursor: pointer;
-      transition: all 200ms ease-in;
-      &:hover {
-        transform: scale(1.15);
-      }
-    }
-  }
 }
 
-.likes__num {
-  margin-right: 0.35em;
+.likes {
+  &__num {
+    margin-right: 0.35em;
+  }
+  &__btn {
+    border: none;
+    color: $color-secondary;
+    padding: 0;
+    background-color: transparent;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 200ms ease-in;
+    &:hover,
+    &:focus {
+      transform: scale(1.15);
+    }
+  }
 }

@@ -38,6 +38,9 @@ function createGallery(medias) {
     card.className = "gallery__card";
     card.id = media.photographerId;
 
+    var btnImg = document.createElement("button");
+    btnImg.className = "gallery__btn";
+
     if (media.image) {
       var cardImg = document.createElement("img");
       cardImg.className = "gallery__img";
@@ -46,7 +49,8 @@ function createGallery(medias) {
         `/public/img/SamplePhotos/${firstName}/low/${media.image}`
       );
 
-      card.appendChild(cardImg);
+      btnImg.appendChild(cardImg);
+      card.appendChild(btnImg);
     } else if (media.video) {
       var cardVideo = document.createElement("video");
       cardVideo.className = "gallery__img";
@@ -57,7 +61,8 @@ function createGallery(medias) {
       );
       videoSrc.setAttribute("type", "video/mp4");
       cardVideo.appendChild(videoSrc);
-      card.appendChild(cardVideo);
+      btnImg.appendChild(cardVideo);
+      card.appendChild(btnImg);
     }
 
     var cardInfo = document.createElement("div");
@@ -76,7 +81,7 @@ function createGallery(medias) {
       "beforeend",
       `<span class="likes__num">${getLikes(
         media
-      )}</span><i class='fas fa-heart' arial-label="likes"></i>`
+      )}</span><button class="likes__btn"><i class='fas fa-heart' arial-label="likes"></i></button>`
     );
 
     cardInfo.appendChild(cardLikes);
@@ -93,21 +98,22 @@ function getLikes(content) {
 }
 
 function getTotalLikes() {
-  var likesElt = document.querySelector(".footer__likes");
+  var likesElt = document.querySelector(".tab__likes");
   var likes = photographerContent.reduce((total, elt) => total + elt.likes, 0);
   likesElt.innerText = likes;
 }
 
 function getRate(photographer) {
-  var rateElt = document.querySelector(".footer__rate");
+  var rateElt = document.querySelector(".tab__rate");
   rateElt.innerText = photographer.price;
 }
 
 function likesListener() {
-  var likesIcons = document.querySelectorAll(".gallery__card .fa-heart");
-  likesIcons.forEach((elt) => {
-    elt.addEventListener("click", (e) => {
-      let photoId = parseInt(e.target.parentNode.parentNode.id);
+  var likesBtn = document.querySelectorAll(".likes__btn");
+  likesBtn.forEach((elt) => {
+    elt.addEventListener("click", function () {
+      console.log(this);
+      let photoId = parseInt(this.parentNode.parentNode.id);
       let photo = photographerContent.filter((photo) => {
         return photo.id === photoId;
       })[0];
@@ -118,8 +124,7 @@ function likesListener() {
         photo.likes++;
         photo.isLiked = true;
       }
-      e.target.parentNode.querySelector(".likes__num").innerText =
-        getLikes(photo);
+      this.parentNode.querySelector(".likes__num").innerText = getLikes(photo);
       getTotalLikes();
     });
   });

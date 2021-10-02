@@ -3,7 +3,8 @@
   background-color: $color-secondary;
   color: #fff;
   font-family: "DM Sans", sans-serif;
-  &:hover {
+  &:hover,
+  &:focus {
     background-color: $color-primary;
     color: #000;
   }

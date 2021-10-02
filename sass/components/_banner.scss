@@ -1,9 +1,15 @@
 .banner {
   display: flex;
   justify-content: space-between;
+  flex-direction: row-reverse;
   background-color: $color-quaternary;
   padding: 2.8em;
   gap: 2.3em;
+  &__aside {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
   &__infos {
     display: flex;
     flex-direction: column;
