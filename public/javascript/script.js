@@ -1,7 +1,6 @@
 import { createCards } from "./createCards.js";
 
 var photographers = new Array();
-var selectedTag = new Array();
 
 //fetch function that retrieve the photographers informations and set it to the photographers array
 fetch("assets/fishEyeData.json")
@@ -13,6 +12,7 @@ fetch("assets/fishEyeData.json")
   .then(function (value) {
     photographers = value.photographers;
     createCards(photographers);
+    tagFilter();
   })
   .catch(function (error) {
     console.log(error);
@@ -29,43 +29,34 @@ window.addEventListener("scroll", function (e) {
   }
 });
 
-//select all the tags in the header
-var tagsList = document.querySelectorAll(".navbar__elt .btn");
+function tagFilter() {
+  //select all the tags in the page
+  const tags = document.querySelectorAll(".btn");
+  const headerTags = document.querySelectorAll(".navbar__elt .btn");
 
-var cardTags = document.querySelectorAll(".card__listElt");
-
-//loop through all the card tags and listen to the clicks
-cardTags.forEach(function (elt) {
-  //Listening to the tags click to filter the photographers by theire tags.
-  elt.addEventListener("click", tagSelecion);
-});
-
-//loop through all the tags and listen to the clicks
-tagsList.forEach(function (elt) {
-  //Listening to the tags click to filter the photographers by theire tags.
-  elt.addEventListener("click", tagSelecion);
-});
-
-function tagSelecion(e) {
-  var tag = e.target;
-  console.log(tag);
-  tagsList.forEach((elt) => {
-    if (elt.classList.contains("isActive") && elt != tag)
-      elt.classList.remove("isActive");
+  //loop through all the tags
+  tags.forEach((tag) => {
+    let selectedTag;
+    //add a listener on every button to activate the class in the header
+    tag.addEventListener("click", function () {
+      //loop through the header tags to find the matching one
+      headerTags.forEach((headerTag) => {
+        if (
+          headerTag.classList.contains("isActive") &&
+          headerTag.innerText.toLowerCase() != this.innerText.toLowerCase()
+        ) {
+          headerTag.classList.remove("isActive");
+        } else if (headerTag) {
+        }
+      });
+    });
   });
-  tag.classList.toggle("isActive");
-  if (tag.classList.contains("isActive"))
-    selectedTag = tag.innerText.toLowerCase();
-  else selectedTag = "";
-
-  if (selectedTag.length > 0) filterPhotographers(selectedTag);
-  else createCards(photographers);
 }
 
-function filterPhotographers(selectedTags) {
+function filterPhotographers(selectedTag) {
   const selectedPhotographers = photographers.filter((photographer) => {
     return photographer.tags.some((tag) => {
-      return selectedTags.includes(tag);
+      return selectedTag === tag;
     });
   });
   createCards(selectedPhotographers);
