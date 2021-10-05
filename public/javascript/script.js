@@ -36,28 +36,54 @@ function tagFilter() {
 
   //loop through all the tags
   tags.forEach((tag) => {
-    let selectedTag;
+    let filterTag = "";
     //add a listener on every button to activate the class in the header
     tag.addEventListener("click", function () {
+      let selectedTag = this.innerText.toLowerCase();
+      console.log(selectedTag);
       //loop through the header tags to find the matching one
       headerTags.forEach((headerTag) => {
-        if (
-          headerTag.classList.contains("isActive") &&
-          headerTag.innerText.toLowerCase() != this.innerText.toLowerCase()
-        ) {
+        if (headerTag.innerText.toLowerCase() === selectedTag) {
+          if (headerTag.classList.contains("isActive")) {
+            headerTag.classList.remove("isActive");
+            filterTag = "";
+          } else {
+            headerTag.classList.add("isActive");
+            filterTag = selectedTag;
+          }
+        } else if (headerTag.classList.contains("isActive")) {
           headerTag.classList.remove("isActive");
-        } else if (headerTag) {
         }
       });
+      if (filterTag.length > 0) filterPhotographers(filterTag);
+      else showPhotographers();
     });
   });
 }
 
-function filterPhotographers(selectedTag) {
+function filterPhotographers(element) {
   const selectedPhotographers = photographers.filter((photographer) => {
     return photographer.tags.some((tag) => {
-      return selectedTag === tag;
+      return element === tag;
     });
   });
-  createCards(selectedPhotographers);
+  const cards = document.querySelectorAll(".card");
+  cards.forEach((card) => {
+    selectedPhotographers.forEach((photographer) => {
+      if (card.id !== photographer.id.toString()) {
+        card.classList.add("isHidden");
+      }
+    });
+  });
+  console.log(selectedPhotographers);
+  // createCards(selectedPhotographers);
 }
+
+function showPhotographers() {
+  const cards = document.querySelectorAll(".card");
+  cards.forEach((card) => {
+    if (card.classList.contains("isHidden")) card.classList.remove("isHidden");
+  });
+}
+
+["", "", ""];

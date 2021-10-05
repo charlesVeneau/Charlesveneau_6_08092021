@@ -283,6 +283,10 @@ select::-ms-expand {
   margin-left: 5px;
 }
 
+.isHidden {
+  display: none;
+}
+
 .gallery {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
