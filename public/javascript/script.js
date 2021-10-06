@@ -1,7 +1,6 @@
 import { createCards } from "./createCards.js";
 
 var photographers = new Array();
-var selectedTag = new Array();
 
 //fetch function that retrieve the photographers informations and set it to the photographers array
 fetch("assets/fishEyeData.json")
@@ -13,6 +12,7 @@ fetch("assets/fishEyeData.json")
   .then(function (value) {
     photographers = value.photographers;
     createCards(photographers);
+    tagFilter();
   })
   .catch(function (error) {
     console.log(error);
@@ -29,44 +29,58 @@ window.addEventListener("scroll", function (e) {
   }
 });
 
-//select all the tags in the header
-var tagsList = document.querySelectorAll(".navbar__elt .btn");
+function tagFilter() {
+  //select all the tags in the page
+  const tags = document.querySelectorAll(".btn");
+  const headerTags = document.querySelectorAll(".navbar__elt .btn");
 
-var cardTags = document.querySelectorAll(".card__listElt");
-
-//loop through all the card tags and listen to the clicks
-cardTags.forEach(function (elt) {
-  //Listening to the tags click to filter the photographers by theire tags.
-  elt.addEventListener("click", tagSelecion);
-});
-
-//loop through all the tags and listen to the clicks
-tagsList.forEach(function (elt) {
-  //Listening to the tags click to filter the photographers by theire tags.
-  elt.addEventListener("click", tagSelecion);
-});
-
-function tagSelecion(e) {
-  var tag = e.target;
-  console.log(tag);
-  tagsList.forEach((elt) => {
-    if (elt.classList.contains("isActive") && elt != tag)
-      elt.classList.remove("isActive");
-  });
-  tag.classList.toggle("isActive");
-  if (tag.classList.contains("isActive"))
-    selectedTag = tag.innerText.toLowerCase();
-  else selectedTag = "";
-
-  if (selectedTag.length > 0) filterPhotographers(selectedTag);
-  else createCards(photographers);
-}
-
-function filterPhotographers(selectedTags) {
-  const selectedPhotographers = photographers.filter((photographer) => {
-    return photographer.tags.some((tag) => {
-      return selectedTags.includes(tag);
+  //loop through all the tags
+  tags.forEach((tag) => {
+    let filterTag = "";
+    //add a listener on every button to activate the class in the header
+    tag.addEventListener("click", function () {
+      let selectedTag = this.innerText.toLowerCase();
+      //loop through the header tags to find the matching one
+      headerTags.forEach((headerTag) => {
+        if (headerTag.innerText.toLowerCase() === selectedTag) {
+          if (headerTag.classList.contains("isActive")) {
+            headerTag.classList.remove("isActive");
+            filterTag = "";
+          } else {
+            headerTag.classList.add("isActive");
+            filterTag = selectedTag;
+          }
+        } else if (headerTag.classList.contains("isActive")) {
+          headerTag.classList.remove("isActive");
+        }
+      });
+      if (filterTag.length > 0) filterPhotographers(filterTag);
+      else showPhotographers();
     });
   });
-  createCards(selectedPhotographers);
 }
+
+function filterPhotographers(element) {
+  const selectedPhotographers = photographers.filter((photographer) => {
+    return photographer.tags.some((tag) => {
+      return element === tag;
+    });
+  });
+  const cards = document.querySelectorAll(".card");
+  cards.forEach((card) => {
+    const isTrue = selectedPhotographers.some((photographer) => {
+      return photographer.id == card.id;
+    });
+    if (isTrue) card.classList.remove("isHidden");
+    else card.classList.add("isHidden");
+  });
+}
+
+function showPhotographers() {
+  const cards = document.querySelectorAll(".card");
+  cards.forEach((card) => {
+    if (card.classList.contains("isHidden")) card.classList.remove("isHidden");
+  });
+}
+
+["", "", ""];
