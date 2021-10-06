@@ -40,7 +40,6 @@ function tagFilter() {
     //add a listener on every button to activate the class in the header
     tag.addEventListener("click", function () {
       let selectedTag = this.innerText.toLowerCase();
-      console.log(selectedTag);
       //loop through the header tags to find the matching one
       headerTags.forEach((headerTag) => {
         if (headerTag.innerText.toLowerCase() === selectedTag) {
@@ -69,14 +68,12 @@ function filterPhotographers(element) {
   });
   const cards = document.querySelectorAll(".card");
   cards.forEach((card) => {
-    selectedPhotographers.forEach((photographer) => {
-      if (card.id !== photographer.id.toString()) {
-        card.classList.add("isHidden");
-      }
+    const isTrue = selectedPhotographers.some((photographer) => {
+      return photographer.id == card.id;
     });
+    if (isTrue) card.classList.remove("isHidden");
+    else card.classList.add("isHidden");
   });
-  console.log(selectedPhotographers);
-  // createCards(selectedPhotographers);
 }
 
 function showPhotographers() {
