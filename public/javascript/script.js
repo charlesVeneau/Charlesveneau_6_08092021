@@ -67,13 +67,7 @@ function filterPhotographers(element) {
     });
   });
   const cards = document.querySelectorAll(".card");
-  cards.forEach((card) => {
-    const isTrue = selectedPhotographers.some((photographer) => {
-      return photographer.id == card.id;
-    });
-    if (isTrue) card.classList.remove("isHidden");
-    else card.classList.add("isHidden");
-  });
+  cards.forEach((card) => {});
 }
 
 function showPhotographers() {
@@ -82,5 +76,3 @@ function showPhotographers() {
     if (card.classList.contains("isHidden")) card.classList.remove("isHidden");
   });
 }
-
-["", "", ""];

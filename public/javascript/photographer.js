@@ -1,4 +1,5 @@
 import { createBanner } from "/public/javascript/createBanner.js";
+import { Lightbox } from "/public/javascript/lightbox.js";
 //retrieve the id of the photagrapher that is stored in the URL params
 const urlId = new URLSearchParams(window.location.search).get("id");
 //Create a variable to store the photographer's information
@@ -24,6 +25,7 @@ fetch("../../assets/fishEyeData.json")
     createGallery(photographerContent);
     getTotalLikes();
     getRate(photographer);
+    Lightbox.init();
   })
   .catch(function (error) {
     console.log(error);
@@ -36,21 +38,26 @@ function createGallery(medias) {
   medias.forEach((media) => {
     var card = document.createElement("article");
     card.className = "gallery__card";
-    card.id = media.photographerId;
+    card.setAttribute("data-id", media.photographerId);
 
-    var btnImg = document.createElement("button");
-    btnImg.className = "gallery__btn";
+    var linkImg = document.createElement("a");
+    linkImg.className = "gallery__link";
 
     if (media.image) {
       var cardImg = document.createElement("img");
+
       cardImg.className = "gallery__img";
       cardImg.setAttribute(
         "src",
         `/public/img/SamplePhotos/${firstName}/low/${media.image}`
       );
+      linkImg.setAttribute(
+        "href",
+        `/public/img/SamplePhotos/${firstName}/${media.image}`
+      );
 
-      btnImg.appendChild(cardImg);
-      card.appendChild(btnImg);
+      linkImg.appendChild(cardImg);
+      card.appendChild(linkImg);
     } else if (media.video) {
       var cardVideo = document.createElement("video");
       cardVideo.className = "gallery__img";
@@ -59,10 +66,14 @@ function createGallery(medias) {
         "src",
         `/public/img/SamplePhotos/${firstName}/${media.video}`
       );
+      linkImg.setAttribute(
+        "href",
+        `/public/img/SamplePhotos/${firstName}/${media.video}`
+      );
       videoSrc.setAttribute("type", "video/mp4");
       cardVideo.appendChild(videoSrc);
-      btnImg.appendChild(cardVideo);
-      card.appendChild(btnImg);
+      linkImg.appendChild(cardVideo);
+      card.appendChild(linkImg);
     }
 
     var cardInfo = document.createElement("div");

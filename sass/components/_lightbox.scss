@@ -1,0 +1,69 @@
+.lightbox {
+  //   display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.9);
+  z-index: 10;
+  animation: lightboxIn 0.5s;
+  transition: opacity 0.3s;
+  &__container {
+    max-width: 1440px;
+    margin: 0 auto;
+    position: relative;
+  }
+  &__next {
+    @include lightbox-btn(100px, 100%);
+    background: url(/public/img/icons/chevron-right.svg) center center / 30px
+      48px no-repeat;
+    top: 0;
+    margin-top: -24px;
+    right: 50px;
+    z-index: 11;
+  }
+  &__prev {
+    @include lightbox-btn(100px, 100%);
+    background: url(/public/img/icons/chevron-left.svg) center center / 30px
+      48px no-repeat;
+    top: 0;
+    margin-top: -24px;
+    left: 50px;
+    z-index: 11;
+  }
+  &__close {
+    @include lightbox-btn(70px, 70px);
+    background: url(/public/img/icons/cross.svg) center center / 42px 42px
+      no-repeat;
+    top: 50px;
+    right: 70px;
+    z-index: 12;
+  }
+  &__media {
+    padding: 62px 185px;
+    height: 100vh;
+    margin: 0 auto;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    // min-height: 100vh;
+    img {
+      width: 100%;
+      //   height: 100%;
+      object-fit: cover;
+    }
+  }
+  &.fadeOut {
+    opacity: 0;
+  }
+}
+
+@keyframes lightboxIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
