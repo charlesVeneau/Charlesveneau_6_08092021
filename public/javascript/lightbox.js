@@ -37,6 +37,7 @@ class Lightbox {
     } else {
       const video = document.createElement("video");
       video.classList.add("lightbox__video");
+      video.setAttribute("controls", "");
       const source = document.createElement("source");
       source.setAttribute("src", url);
       source.setAttribute("type", "video/mp4");
@@ -94,8 +95,8 @@ class Lightbox {
     dom.innerHTML = `      <article class="lightbox__container">
         <button class="lightbox__close">Fermer</button>
         <button class="lightbox__prev">Précedent</button>
-        <button class="lightbox__next">Suivant</button>
         <div class="lightbox__media"></div>
+        <button class="lightbox__next">Suivant</button>
       </article>`;
     dom
       .querySelector(".lightbox__close")

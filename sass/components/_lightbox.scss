@@ -1,5 +1,4 @@
 .lightbox {
-  //   display: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -9,44 +8,48 @@
   z-index: 10;
   animation: lightboxIn 0.5s;
   transition: opacity 0.3s;
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1240px;
+    position: relative;
+    height: 100vh;
+    margin: 62px auto 0;
+  }
   &__next {
     @include lightbox-btn(100px, 100%);
     background: url(/public/img/icons/chevron-right.svg) center center / 30px
       48px no-repeat;
-    top: 0;
-    margin-top: -24px;
     right: 50px;
-    z-index: 11;
   }
   &__prev {
     @include lightbox-btn(100px, 100%);
     background: url(/public/img/icons/chevron-left.svg) center center / 30px
       48px no-repeat;
-    top: 0;
-    margin-top: -24px;
     left: 50px;
-    z-index: 11;
   }
   &__close {
-    @include lightbox-btn(70px, 70px);
+    @include lightbox-btn(100px, 70px);
     background: url(/public/img/icons/cross.svg) center center / 42px 42px
       no-repeat;
-    top: 50px;
-    right: 70px;
-    z-index: 12;
+    top: 62px;
+    right: 0;
+    position: absolute;
   }
   &__media {
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
+    justify-content: center;
+    max-width: 870px;
     img,
     video {
-      padding-top: 62px;
-      max-height: 90vh;
+      max-height: 85vh;
       height: auto;
       object-fit: cover;
     }
+  }
+  &__title {
+    margin: 1em 0;
   }
   &.fadeOut {
     opacity: 0;
