@@ -348,11 +348,6 @@ select::-ms-expand {
           animation: lightboxIn 0.5s;
   transition: opacity 0.3s;
 }
-.lightbox__container {
-  max-width: 1440px;
-  margin: 0 auto;
-  position: relative;
-}
 .lightbox__next {
   border: none;
   width: 100px;
@@ -407,12 +402,16 @@ select::-ms-expand {
   opacity: 1;
 }
 .lightbox__media {
-  padding: 62px 185px;
-  height: 100vh;
-  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
-.lightbox__media img {
-  width: 100%;
+.lightbox__media img,
+.lightbox__media video {
+  padding-top: 62px;
+  max-height: 90vh;
+  height: auto;
   -o-object-fit: cover;
      object-fit: cover;
 }

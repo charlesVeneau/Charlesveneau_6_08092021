@@ -42,6 +42,7 @@ function createGallery(medias) {
 
     var linkImg = document.createElement("a");
     linkImg.className = "gallery__link";
+    linkImg.setAttribute("data-title", media.title);
 
     if (media.image) {
       var cardImg = document.createElement("img");
