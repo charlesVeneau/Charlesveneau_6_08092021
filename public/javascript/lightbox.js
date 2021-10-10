@@ -1,25 +1,31 @@
 class Lightbox {
   static init() {
     const links = Array.from(document.querySelectorAll(".gallery__link"));
-    const gallery = links.map((link) => link.getAttribute("href"));
+    const images = links.map((link) => link.getAttribute("href"));
+    const titles = links.map((link) => link.getAttribute("data-title"));
     links.forEach((link) =>
       link.addEventListener("click", (e) => {
         e.preventDefault();
-        console.log(e.currentTarget);
-        new Lightbox(e.currentTarget.getAttribute("href"), gallery);
+        new Lightbox(
+          e.currentTarget.getAttribute("href"),
+          images,
+          e.currentTarget.getAttribute("data-title"),
+          titles
+        );
       })
     );
   }
-  constructor(url, images) {
-    this.element = this.buildDOM(url);
+  constructor(url, images, title, titles) {
+    this.element = this.buildDOM();
     this.images = images;
-    this.loadMedia(url);
+    this.titles = titles;
+    this.loadMedia(url, title);
     this.onKeyUp = this.onKeyUp.bind(this);
     document.body.appendChild(this.element);
     document.addEventListener("keyup", this.onKeyUp);
   }
 
-  loadMedia(url) {
+  loadMedia(url, title) {
     this.url = null;
     const media = this.element.querySelector(".lightbox__media");
     media.innerHTML = "";
@@ -37,10 +43,10 @@ class Lightbox {
       video.appendChild(source);
       media.appendChild(video);
     }
-    // const mediaTitle = document.createElement("h4");
-    // mediaTitle.classList.add("lightbox__title");
-    // mediaTitle.innerText = title;
-    // media.appendChild(mediaTitle);
+    const mediaTitle = document.createElement("h4");
+    mediaTitle.classList.add("lightbox__title");
+    mediaTitle.innerText = title;
+    media.appendChild(mediaTitle);
     this.url = url;
   }
 
@@ -69,7 +75,7 @@ class Lightbox {
     if (position === this.images.length - 1) {
       position = -1;
     }
-    this.loadMedia(this.images[position + 1]);
+    this.loadMedia(this.images[position + 1], this.titles[position + 1]);
   }
 
   prev(e) {
@@ -78,10 +84,10 @@ class Lightbox {
     if (position === 0) {
       position = this.images.length;
     }
-    this.loadMedia(this.images[position - 1]);
+    this.loadMedia(this.images[position - 1], this.titles[position - 1]);
   }
 
-  buildDOM(url) {
+  buildDOM() {
     const dom = document.createElement("section");
     dom.classList.add("lightbox");
     dom.setAttribute("aria-label", "image closeup view");
