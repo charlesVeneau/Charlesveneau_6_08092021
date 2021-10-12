@@ -67,7 +67,13 @@ function filterPhotographers(element) {
     });
   });
   const cards = document.querySelectorAll(".card");
-  cards.forEach((card) => {});
+  cards.forEach((card) => {
+    const isTrue = selectedPhotographers.some((photographer) => {
+      return photographer.id == card.getAttribute("data-id");
+    });
+    if (isTrue) card.classList.remove("isHidden");
+    else card.classList.add("isHidden");
+  });
 }
 
 function showPhotographers() {
