@@ -24,7 +24,9 @@ fetch("../../assets/fishEyeData.json")
     createBanner(photographer);
     createGallery(photographerContent);
     getTotalLikes();
+    tagFilter();
     getRate(photographer);
+
     Lightbox.init();
   })
   .catch(function (error) {
@@ -39,6 +41,9 @@ function createGallery(medias) {
     var card = document.createElement("article");
     card.className = "gallery__card";
     card.setAttribute("data-id", media.photographerId);
+    media.tags.forEach((tag) => {
+      card.setAttribute("data-tags", tag);
+    });
 
     var linkImg = document.createElement("a");
     linkImg.className = "gallery__link";
@@ -139,5 +144,38 @@ function likesListener() {
       this.parentNode.querySelector(".likes__num").innerText = getLikes(photo);
       getTotalLikes();
     });
+  });
+}
+
+function tagFilter() {
+  const tags = document.querySelectorAll(".btn");
+
+  tags.forEach((tag) => {
+    let filterTag = "";
+    tag.addEventListener("click", function () {
+      tags.forEach((tag) => {
+        if (tag.classList.contains("isActive")) {
+          tag.classList.remove("isActive");
+          filterTag = "";
+        } else {
+          if (this === tag) {
+            tag.classList.add("isActive");
+            filterTag = tag.innerText.toLowerCase();
+          }
+        }
+      });
+      filterGallery(filterTag);
+    });
+  });
+}
+
+function filterGallery(filterTag) {
+  const cards = document.querySelectorAll(".gallery__card");
+  cards.forEach((card) => {
+    if (filterTag === "" || card.getAttribute("data-tags") === filterTag)
+      card.classList.remove("isHidden");
+    else if (card.getAttribute("data-tags") != filterTag) {
+      card.classList.add("isHidden");
+    }
   });
 }

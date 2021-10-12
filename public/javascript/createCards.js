@@ -6,7 +6,7 @@ function createCards(elements) {
   elements.forEach(function (element) {
     var card = document.createElement("article");
     card.className = "card";
-    card.id = element.id;
+    card.setAttribute("data-id", element.id);
     card.appendChild(createCardLink(element));
     card.appendChild(createCardInfo(element));
     card.appendChild(createCardTagsList(element.tags));

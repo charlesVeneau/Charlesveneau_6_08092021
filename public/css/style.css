@@ -225,6 +225,10 @@ select::-ms-expand {
 .btn::before {
   content: "#";
 }
+.btn.isActive {
+  background-color: #901c1c;
+  color: #ffffff;
+}
 
 .card {
   min-width: 210px;
@@ -396,6 +400,7 @@ select::-ms-expand {
   top: 62px;
   right: 0;
   position: absolute;
+  z-index: 12;
 }
 .lightbox__close:hover {
   opacity: 1;

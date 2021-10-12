@@ -15,4 +15,8 @@
   &::before {
     content: "#";
   }
+  &.isActive {
+    background-color: $color-secondary;
+    color: #ffffff;
+  }
 }
