@@ -28,12 +28,22 @@ class Lightbox {
   loadMedia(url, title) {
     this.url = null;
     const media = this.element.querySelector(".lightbox__media");
+    const loader = document.createElement("div");
+    loader.classList.add("lightbox__loader");
+    const mediaTitle = document.createElement("h4");
+    mediaTitle.classList.add("lightbox__title");
+    mediaTitle.innerText = title;
     media.innerHTML = "";
+    media.appendChild(loader);
     if (url.indexOf(".jpg") > -1) {
       const img = new Image();
       img.classList.add("lightbox__img");
+      img.onload = function () {
+        media.removeChild(loader);
+        media.appendChild(img);
+        media.appendChild(mediaTitle);
+      };
       img.src = url;
-      media.appendChild(img);
     } else {
       const video = document.createElement("video");
       video.classList.add("lightbox__video");
@@ -42,12 +52,11 @@ class Lightbox {
       source.setAttribute("src", url);
       source.setAttribute("type", "video/mp4");
       video.appendChild(source);
+      media.removeChild(loader);
       media.appendChild(video);
+      media.appendChild(mediaTitle);
     }
-    const mediaTitle = document.createElement("h4");
-    mediaTitle.classList.add("lightbox__title");
-    mediaTitle.innerText = title;
-    media.appendChild(mediaTitle);
+
     this.url = url;
   }
 
@@ -95,7 +104,8 @@ class Lightbox {
     dom.innerHTML = `      <article class="lightbox__container">
         <button class="lightbox__close">Fermer</button>
         <button class="lightbox__prev">Précedent</button>
-        <div class="lightbox__media"></div>
+        <div class="lightbox__media">
+        </div>
         <button class="lightbox__next">Suivant</button>
       </article>`;
     dom
