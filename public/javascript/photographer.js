@@ -57,6 +57,7 @@ function createGallery(medias) {
         "src",
         `/public/img/SamplePhotos/${firstName}/low/${media.image}`
       );
+      cardImg.setAttribute("alt", media.title);
       linkImg.setAttribute(
         "href",
         `/public/img/SamplePhotos/${firstName}/${media.image}`
@@ -72,6 +73,7 @@ function createGallery(medias) {
         "src",
         `/public/img/SamplePhotos/${firstName}/${media.video}`
       );
+      cardVideo.setAttribute("alt", media.title);
       linkImg.setAttribute(
         "href",
         `/public/img/SamplePhotos/${firstName}/${media.video}`
