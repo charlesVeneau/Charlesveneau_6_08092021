@@ -12,6 +12,9 @@
     max-width: 350px;
     margin-bottom: 1em;
   }
+  &__link {
+    display: block;
+  }
   &__img {
     width: 350px;
     height: 300px;
@@ -46,5 +49,25 @@
     &:focus {
       transform: scale(1.15);
     }
+  }
+}
+
+@media screen and (max-width: $mobile) {
+  .gallery {
+    grid-template-columns: 1fr;
+    &__card {
+      margin: 0 auto;
+    }
+    &__img {
+      height: 190px;
+      width: 335px;
+      object-position: top;
+    }
+  }
+  .filter {
+    display: none;
+  }
+  .tab {
+    display: none;
   }
 }

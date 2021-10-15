@@ -11,9 +11,10 @@
   &__container {
     display: flex;
     justify-content: space-between;
+    align-items: stretch;
     max-width: 1240px;
     position: relative;
-    height: 100vh;
+    height: 100%;
     margin: 62px auto 0;
   }
   &__next {
@@ -49,6 +50,9 @@
       object-fit: cover;
     }
   }
+  &__img {
+    border-radius: 5px;
+  }
   &__title {
     margin: 1em 0;
   }
@@ -69,5 +73,29 @@
   }
   to {
     opacity: 1;
+  }
+}
+
+@media screen and (max-width: $mobile) {
+  .lightbox {
+    &__container {
+      margin-top: 0;
+    }
+    &__img {
+      max-width: 290px;
+    }
+    &__prev,
+    &__next {
+      background-size: 8px 14px;
+    }
+    &__close {
+      top: 25%;
+      width: 42px;
+      background-size: 12px;
+    }
+    &__title {
+      font-size: 0.77em;
+      margin: 0.77em 0;
+    }
   }
 }

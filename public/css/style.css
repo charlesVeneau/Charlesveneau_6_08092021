@@ -204,6 +204,38 @@ select::-ms-expand {
   font-size: 1em;
 }
 
+@media screen and (max-width: 767px) {
+  .banner {
+    background-color: transparent;
+    padding: 0.5em;
+    gap: 0;
+  }
+  .banner__btn {
+    position: fixed;
+    bottom: 30px;
+    padding: 0.375em 1.25em;
+    z-index: 10;
+    font-size: 1em;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .banner__aside {
+    align-items: center;
+  }
+  .banner__img {
+    width: 100px;
+    height: 100px;
+  }
+  .banner__title {
+    font-size: 2em;
+  }
+  .banner__list {
+    flex-wrap: wrap;
+  }
+  .banner__location, .banner__catchPhrase, .banner__listElt {
+    font-size: 0.7em;
+  }
+}
 .btn {
   font-size: 0.66em;
   padding: 3px 7px;
@@ -302,6 +334,9 @@ select::-ms-expand {
   max-width: 350px;
   margin-bottom: 1em;
 }
+.gallery__link {
+  display: block;
+}
 .gallery__img {
   width: 350px;
   height: 300px;
@@ -336,6 +371,28 @@ select::-ms-expand {
   transform: scale(1.15);
 }
 
+@media screen and (max-width: 767px) {
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+  .gallery__card {
+    margin: 0 auto;
+  }
+  .gallery__img {
+    height: 190px;
+    width: 335px;
+    -o-object-position: top;
+       object-position: top;
+  }
+
+  .filter {
+    display: none;
+  }
+
+  .tab {
+    display: none;
+  }
+}
 .lightbox {
   position: fixed;
   top: 0;
@@ -351,9 +408,10 @@ select::-ms-expand {
 .lightbox__container {
   display: flex;
   justify-content: space-between;
+  align-items: stretch;
   max-width: 1240px;
   position: relative;
-  height: 100vh;
+  height: 100%;
   margin: 62px auto 0;
 }
 .lightbox__next {
@@ -414,6 +472,9 @@ select::-ms-expand {
   -o-object-fit: cover;
      object-fit: cover;
 }
+.lightbox__img {
+  border-radius: 5px;
+}
 .lightbox__title {
   margin: 1em 0;
 }
@@ -442,6 +503,26 @@ select::-ms-expand {
   }
   to {
     opacity: 1;
+  }
+}
+@media screen and (max-width: 767px) {
+  .lightbox__container {
+    margin-top: 0;
+  }
+  .lightbox__img {
+    max-width: 290px;
+  }
+  .lightbox__prev, .lightbox__next {
+    background-size: 8px 14px;
+  }
+  .lightbox__close {
+    top: 25%;
+    width: 42px;
+    background-size: 12px;
+  }
+  .lightbox__title {
+    font-size: 0.77em;
+    margin: 0.77em 0;
   }
 }
 .tab {
