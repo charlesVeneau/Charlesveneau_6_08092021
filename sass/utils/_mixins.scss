@@ -3,6 +3,11 @@
   background-color: $color-secondary;
   color: #fff;
   font-family: "DM Sans", sans-serif;
+  padding: 1.5em 1em;
+  border: none;
+  font-weight: 700;
+  transition: all 0.2s ease-in;
+  cursor: pointer;
   &:hover,
   &:focus {
     background-color: $color-primary;
@@ -27,7 +32,8 @@
   opacity: 0.5;
   transition: opacity 0.2s;
   cursor: pointer;
-  &:hover {
+  &:hover,
+  &:focus {
     opacity: 1;
   }
 }

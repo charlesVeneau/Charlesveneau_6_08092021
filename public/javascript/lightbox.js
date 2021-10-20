@@ -101,13 +101,13 @@ class Lightbox {
     const dom = document.createElement("section");
     dom.classList.add("lightbox");
     dom.setAttribute("aria-label", "image closeup view");
-    dom.innerHTML = `      <article class="lightbox__container">
+    dom.innerHTML = `<dialog class="lightbox__container" open>
         <button class="lightbox__close">Fermer</button>
         <button class="lightbox__prev">Précedent</button>
         <div class="lightbox__media">
         </div>
         <button class="lightbox__next">Suivant</button>
-      </article>`;
+      </dialog>`;
     dom
       .querySelector(".lightbox__close")
       .addEventListener("click", this.close.bind(this));

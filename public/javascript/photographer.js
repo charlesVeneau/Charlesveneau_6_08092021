@@ -1,5 +1,6 @@
 import { createBanner } from "/public/javascript/createBanner.js";
 import { Lightbox } from "/public/javascript/lightbox.js";
+import { ContactForm } from "/public/javascript/contactForm.js";
 //retrieve the id of the photagrapher that is stored in the URL params
 const urlId = new URLSearchParams(window.location.search).get("id");
 //Create a variable to store the photographer's information
@@ -26,8 +27,8 @@ fetch("../../assets/fishEyeData.json")
     getTotalLikes();
     tagFilter();
     getRate(photographer);
-
     Lightbox.init();
+    ContactForm.init();
   })
   .catch(function (error) {
     console.log(error);
@@ -40,7 +41,7 @@ function createGallery(medias) {
   medias.forEach((media) => {
     var card = document.createElement("article");
     card.className = "gallery__card";
-    card.setAttribute("data-id", media.photographerId);
+    card.setAttribute("data-id", media.id);
     media.tags.forEach((tag) => {
       card.setAttribute("data-tags", tag);
     });
@@ -86,7 +87,7 @@ function createGallery(medias) {
 
     var cardInfo = document.createElement("div");
     cardInfo.className = "gallery__info";
-    cardInfo.id = media.id;
+    // cardInfo.id = media.id;
 
     var cardTitle = document.createElement("p");
     cardTitle.className = "gallery__title";
@@ -131,8 +132,9 @@ function likesListener() {
   var likesBtn = document.querySelectorAll(".likes__btn");
   likesBtn.forEach((elt) => {
     elt.addEventListener("click", function () {
-      console.log(this);
-      let photoId = parseInt(this.parentNode.parentNode.id);
+      let photoId = parseInt(
+        this.parentNode.parentNode.parentNode.getAttribute("data-id")
+      );
       let photo = photographerContent.filter((photo) => {
         return photo.id === photoId;
       })[0];
@@ -181,3 +183,66 @@ function filterGallery(filterTag) {
     }
   });
 }
+
+const filterBox = document.querySelector("#filter__box");
+filterBox.addEventListener("change", function () {
+  filterTag(this.value);
+});
+
+function filterTag(value) {
+  const cards = Array.from(document.querySelectorAll(".gallery__card"));
+  console.log(
+    cards.sort(function (a, b) {
+      return a.getAttribute("data-id") > b.getAttribute("data-id") ? 1 : -1;
+    })
+  );
+}
+
+/*<section class="form">
+  <dialog class="form__container" open>
+    <button class="form__close">
+      <span class="sr-only">fermer</span>
+    </button>
+    <h1 class="form__title">Contactez-moi </h1>
+    <form action="profil.html" class="form__elt">
+      <label for="firstname" class="form__label">
+        Prénom
+      </label>
+      <input
+        type="text"
+        name="firstname"
+        id="firstname"
+        class="form__input"
+        required
+      />
+      <label for="lastname" class="form__label">
+        Nom
+      </label>
+      <input
+        type="text"
+        name="lastname"
+        id="lastname"
+        class="form__input"
+        required
+      />
+      <label for="email" class="form__label">
+        Email
+      </label>
+      <input
+        type="email"
+        name="email"
+        id="email"
+        class="form__input"
+        required
+      />
+      <label for="message" class="form__label">
+        Votre message
+      </label>
+      <textarea required class="form__textarea" rows="4"></textarea>
+      <button type="submit" class="form__btn">
+        Envoyer
+      </button>
+    </form>
+  </dialog>
+</section>
+*/

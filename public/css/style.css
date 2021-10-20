@@ -160,7 +160,7 @@ select::-ms-expand {
   justify-content: space-between;
 }
 .banner__title {
-  color: #d3573c;
+  color: #db8876;
   font-size: 3.5em;
 }
 .banner__location {
@@ -181,18 +181,18 @@ select::-ms-expand {
   flex-grow: 1;
 }
 .banner__btn {
+  border-radius: 5px;
+  background-color: #901c1c;
+  color: #fff;
+  font-family: "DM Sans", sans-serif;
   padding: 1.5em 1em;
   border: none;
   font-weight: 700;
   transition: all 0.2s ease-in;
   cursor: pointer;
-  border-radius: 5px;
-  background-color: #901c1c;
-  color: #fff;
-  font-family: "DM Sans", sans-serif;
 }
 .banner__btn:hover, .banner__btn:focus {
-  background-color: #d3573c;
+  background-color: #db8876;
   color: #000;
 }
 .banner__list {
@@ -286,7 +286,7 @@ select::-ms-expand {
   transition: transform 0.2s ease-in;
 }
 .card__title {
-  color: #d3573c;
+  color: #db8876;
   font-size: 2em;
   margin-top: 0.33em;
   transition: color 0.2s ease-in;
@@ -430,7 +430,7 @@ select::-ms-expand {
   background: url(/public/img/icons/chevron-right.svg) center center/30px 48px no-repeat;
   right: 50px;
 }
-.lightbox__next:hover {
+.lightbox__next:hover, .lightbox__next:focus {
   opacity: 1;
 }
 .lightbox__prev {
@@ -444,7 +444,7 @@ select::-ms-expand {
   background: url(/public/img/icons/chevron-left.svg) center center/30px 48px no-repeat;
   left: 50px;
 }
-.lightbox__prev:hover {
+.lightbox__prev:hover, .lightbox__prev:focus {
   opacity: 1;
 }
 .lightbox__close {
@@ -461,7 +461,7 @@ select::-ms-expand {
   position: absolute;
   z-index: 12;
 }
-.lightbox__close:hover {
+.lightbox__close:hover, .lightbox__close:focus {
   opacity: 1;
 }
 .lightbox__media {
@@ -567,6 +567,89 @@ select::-ms-expand {
   border-radius: 5px;
 }
 
+.form {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.5);
+  -webkit-animation: fadeIn 0.4s;
+          animation: fadeIn 0.4s;
+}
+.form__container {
+  position: relative;
+  margin: 10vh auto;
+  background-color: #db8876;
+  min-width: 500px;
+  max-width: 700px;
+  vertical-align: middle;
+  padding: 2em;
+  border-radius: 5px;
+  box-shadow: -5px 10px 30px rgba(0, 0, 0, 0.25);
+  border: none;
+}
+.form__close {
+  border: none;
+  width: 45px;
+  height: 45px;
+  text-indent: -9999px;
+  opacity: 0.5;
+  transition: opacity 0.2s;
+  cursor: pointer;
+  background: url(/public/img/icons/cross_white.svg) center center/42px 42px no-repeat;
+  position: absolute;
+  top: 2em;
+  right: 2em;
+}
+.form__close:hover, .form__close:focus {
+  opacity: 1;
+}
+.form__title {
+  font-size: 2em;
+  color: black;
+  font-weight: 400;
+}
+.form__label {
+  display: block;
+  font-size: 1.3em;
+  color: #525252;
+  margin-top: 0.4em;
+}
+.form__input {
+  border-radius: 5px;
+  border: none;
+  width: 100%;
+  font-size: 1.3em;
+  padding: 0.4em;
+}
+.form__textarea {
+  border-radius: 5px;
+  border: none;
+  width: 100%;
+  font-size: 1.3em;
+}
+.form__btn {
+  border-radius: 5px;
+  background-color: #901c1c;
+  color: #fff;
+  font-family: "DM Sans", sans-serif;
+  padding: 1.5em 1em;
+  border: none;
+  font-weight: 700;
+  transition: all 0.2s ease-in;
+  cursor: pointer;
+  margin-top: 1.3em;
+  width: 170px;
+}
+.form__btn:hover, .form__btn:focus {
+  background-color: #db8876;
+  color: #000;
+}
+.formHidden {
+  display: none;
+}
+
 .anchor__link {
   position: fixed;
   z-index: 10;
@@ -579,10 +662,15 @@ select::-ms-expand {
   background-color: #901c1c;
   color: #fff;
   font-family: "DM Sans", sans-serif;
+  padding: 1.5em 1em;
+  border: none;
+  font-weight: 700;
+  transition: all 0.2s ease-in;
+  cursor: pointer;
   transition: all 0.4s ease;
 }
 .anchor__link:hover, .anchor__link:focus {
-  background-color: #d3573c;
+  background-color: #db8876;
   color: #000;
 }
 .anchor__link.showAnchor {

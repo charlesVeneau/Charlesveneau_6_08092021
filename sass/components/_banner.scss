@@ -33,11 +33,6 @@
     flex-grow: 1;
   }
   &__btn {
-    padding: 1.5em 1em;
-    border: none;
-    font-weight: 700;
-    transition: all 0.2s ease-in;
-    cursor: pointer;
     @include btn-primary;
   }
   &__list {

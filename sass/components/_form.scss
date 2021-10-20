@@ -1,0 +1,61 @@
+.form {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.5);
+  animation: fadeIn 0.4s;
+  &__container {
+    position: relative;
+    margin: 10vh auto;
+    background-color: $color-primary;
+    min-width: 500px;
+    max-width: 700px;
+    vertical-align: middle;
+    padding: 2em;
+    border-radius: 5px;
+    box-shadow: -5px 10px 30px rgba(0, 0, 0, 0.25);
+    border: none;
+  }
+  &__close {
+    @include lightbox-btn(45px, 45px);
+    background: url(/public/img/icons/cross_white.svg) center center / 42px 42px
+      no-repeat;
+    position: absolute;
+    top: 2em;
+    right: 2em;
+  }
+  &__title {
+    font-size: 2em;
+    color: black;
+    font-weight: 400;
+  }
+  &__label {
+    display: block;
+    font-size: 1.3em;
+    color: $color-tertiary;
+    margin-top: 0.4em;
+  }
+  &__input {
+    border-radius: 5px;
+    border: none;
+    width: 100%;
+    font-size: 1.3em;
+    padding: 0.4em;
+  }
+  &__textarea {
+    border-radius: 5px;
+    border: none;
+    width: 100%;
+    font-size: 1.3em;
+  }
+  &__btn {
+    @include btn-primary;
+    margin-top: 1.3em;
+    width: 170px;
+  }
+  &Hidden {
+    display: none;
+  }
+}
