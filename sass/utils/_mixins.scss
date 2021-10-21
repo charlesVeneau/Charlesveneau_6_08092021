@@ -1,9 +1,9 @@
-@mixin btn-primary {
+@mixin btn-primary($marginV, $marginH) {
   border-radius: 5px;
   background-color: $color-secondary;
   color: #fff;
   font-family: "DM Sans", sans-serif;
-  padding: 1.5em 1em;
+  padding: $marginV $marginH;
   border: none;
   font-weight: 700;
   transition: all 0.2s ease-in;

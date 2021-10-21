@@ -5,6 +5,7 @@
   right: 0;
   bottom: 0;
   background: rgba(255, 255, 255, 0.5);
+  z-index: 12;
   animation: fadeIn 0.4s;
   &__container {
     position: relative;
@@ -17,6 +18,12 @@
     border-radius: 5px;
     box-shadow: -5px 10px 30px rgba(0, 0, 0, 0.25);
     border: none;
+    @media screen and (max-width: $mobile) {
+      min-width: auto;
+      height: 100vh;
+      margin: 0;
+      padding: 1em;
+    }
   }
   &__close {
     @include lightbox-btn(45px, 45px);
@@ -25,6 +32,15 @@
     position: absolute;
     top: 2em;
     right: 2em;
+    @media screen and (max-width: $mobile) {
+      background-size: 18px;
+    }
+  }
+  &__elt {
+    text-align: left;
+    @media screen and (max-width: $mobile) {
+      text-align: center;
+    }
   }
   &__title {
     font-size: 2em;
@@ -36,6 +52,7 @@
     font-size: 1.3em;
     color: $color-tertiary;
     margin-top: 0.4em;
+    text-align: left;
   }
   &__input {
     border-radius: 5px;
@@ -51,9 +68,15 @@
     font-size: 1.3em;
   }
   &__btn {
-    @include btn-primary;
+    @include btn-primary(1.5em, 1em);
     margin-top: 1.3em;
+
     width: 170px;
+    @media screen and (max-width: $mobile) {
+      margin: 1.3em auto;
+      padding: 0.375em 1.25em;
+      font-size: 1em;
+    }
   }
   &Hidden {
     display: none;

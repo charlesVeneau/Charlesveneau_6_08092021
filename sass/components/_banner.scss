@@ -33,7 +33,7 @@
     flex-grow: 1;
   }
   &__btn {
-    @include btn-primary;
+    @include btn-primary(1.5em, 1em);
   }
   &__list {
     display: flex;

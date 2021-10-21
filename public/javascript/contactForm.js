@@ -10,13 +10,19 @@ class ContactForm {
 
   constructor(name) {
     this.element = this.buildForm(name);
-    // this.name = name;
+    this.onKeyUp = this.onKeyUp.bind(this);
     document.body.appendChild(this.element);
+    document.addEventListener("keyup", this.onKeyUp);
+  }
+
+  onKeyUp(e) {
+    if (e.key === "Escape") this.close(e);
   }
 
   close(e) {
     e.preventDefault();
     this.element.remove();
+    document.removeEventListener("keyup", this.onKeyUp);
   }
 
   submit(e) {
