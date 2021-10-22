@@ -1,6 +1,6 @@
-import { createBanner } from "public/javascript/createBanner.js";
-import { Lightbox } from "public/javascript/lightbox.js";
-import { ContactForm } from "public/javascript/contactForm.js";
+import { createBanner } from "../../public/javascript/createBanner.js";
+import { Lightbox } from "../../public/javascript/lightbox.js";
+import { ContactForm } from "../../public/javascript/contactForm.js";
 //retrieve the id of the photagrapher that is stored in the URL params
 const urlId = new URLSearchParams(window.location.search).get("id");
 //Create a variable to store the photographer's information
