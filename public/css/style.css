@@ -66,16 +66,6 @@ a {
   border: 0;
 }
 
-select {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-
-select::-ms-expand {
-  display: none;
-}
-
 .header {
   display: flex;
   justify-content: space-between;
@@ -418,6 +408,8 @@ select::-ms-expand {
   position: relative;
   height: 100%;
   margin: 62px auto 0;
+  border: none;
+  background-color: transparent;
 }
 .lightbox__next {
   border: none;
@@ -563,7 +555,7 @@ select::-ms-expand {
   border: none;
   color: #fff;
   font-size: 1em;
-  padding: 1.7em 1em;
+  padding: 1em;
   border-radius: 5px;
 }
 

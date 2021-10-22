@@ -56,7 +56,6 @@ class Lightbox {
       media.appendChild(video);
       media.appendChild(mediaTitle);
     }
-
     this.url = url;
   }
 
