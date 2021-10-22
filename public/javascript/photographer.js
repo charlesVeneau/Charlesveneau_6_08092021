@@ -7,7 +7,7 @@ const urlId = new URLSearchParams(window.location.search).get("id");
 var photographer;
 var photographerContent;
 
-fetch("../../assets/fishEyeData.json")
+fetch("../assets/fishEyeData.json")
   .then(function (response) {
     if (response.ok) {
       return response.json();
