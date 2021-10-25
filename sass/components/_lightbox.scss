@@ -21,19 +21,19 @@
   }
   &__next {
     @include lightbox-btn(100px, 100%);
-    background: url(/public/img/icons/chevron-right.svg) center center / 30px
-      48px no-repeat;
+    background: url(../../public/img/icons/chevron-right.svg) center center /
+      30px 48px no-repeat;
     right: 50px;
   }
   &__prev {
     @include lightbox-btn(100px, 100%);
-    background: url(/public/img/icons/chevron-left.svg) center center / 30px
-      48px no-repeat;
+    background: url(../../public/img/icons/chevron-left.svg) center center /
+      30px 48px no-repeat;
     left: 50px;
   }
   &__close {
     @include lightbox-btn(100px, 70px);
-    background: url(/public/img/icons/cross.svg) center center / 42px 42px
+    background: url(../../public/img/icons/cross.svg) center center / 42px 42px
       no-repeat;
     top: 62px;
     right: 0;
@@ -61,7 +61,7 @@
     width: 38px;
     height: 38px;
     opacity: 0.5;
-    background: url(/public/img/icons/loader.svg) center center no-repeat;
+    background: url(../../public/img/icons/loader.svg) center center no-repeat;
   }
   &.fadeOut {
     opacity: 0;

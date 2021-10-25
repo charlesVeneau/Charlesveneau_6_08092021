@@ -9,7 +9,7 @@ function createBanner(photographer) {
     .querySelector(".banner__img")
     .setAttribute(
       "src",
-      `/public/img/SamplePhotos/Photographers_ID_Photos/low/${photographer.portrait}`
+      `../public/img/SamplePhotos/Photographers_ID_Photos/low/${photographer.portrait}`
     );
   document.querySelector(".banner__img").setAttribute("alt", photographer.name);
   photographer.tags.forEach(function (tag) {
