@@ -56,12 +56,12 @@ function createGallery(medias) {
       cardImg.className = "gallery__img";
       cardImg.setAttribute(
         "src",
-        `/public/img/SamplePhotos/${firstName}/low/${media.image}`
+        `../public/img/SamplePhotos/${firstName}/low/${media.image}`
       );
       cardImg.setAttribute("alt", media.title);
       linkImg.setAttribute(
         "href",
-        `/public/img/SamplePhotos/${firstName}/${media.image}`
+        `../public/img/SamplePhotos/${firstName}/${media.image}`
       );
 
       linkImg.appendChild(cardImg);
@@ -72,12 +72,12 @@ function createGallery(medias) {
       var videoSrc = document.createElement("source");
       videoSrc.setAttribute(
         "src",
-        `/public/img/SamplePhotos/${firstName}/${media.video}`
+        `../public/img/SamplePhotos/${firstName}/${media.video}`
       );
       cardVideo.setAttribute("alt", media.title);
       linkImg.setAttribute(
         "href",
-        `/public/img/SamplePhotos/${firstName}/${media.video}`
+        `../public/img/SamplePhotos/${firstName}/${media.video}`
       );
       videoSrc.setAttribute("type", "video/mp4");
       cardVideo.appendChild(videoSrc);

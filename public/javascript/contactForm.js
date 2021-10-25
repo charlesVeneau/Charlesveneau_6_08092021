@@ -26,14 +26,14 @@ class ContactForm {
   }
 
   submit(e) {
-    e.preventDefault();
+    // e.preventDefault();
     const inputs = this.element.querySelectorAll(".form__input");
     inputs.forEach((input) => {
       console.log(`${input.id} : ${input.value}`);
     });
     const message = this.element.querySelector(".form__textarea");
     console.log(`message: ${message.value}`);
-    this.close(e);
+    // this.close(e);
   }
 
   buildForm(name) {
