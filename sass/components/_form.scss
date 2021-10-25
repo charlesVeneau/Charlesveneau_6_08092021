@@ -27,8 +27,8 @@
   }
   &__close {
     @include lightbox-btn(45px, 45px);
-    background: url(/public/img/icons/cross_white.svg) center center / 42px 42px
-      no-repeat;
+    background: url("../../public/img/icons/cross_white.svg") center center /
+      42px 42px no-repeat;
     position: absolute;
     top: 2em;
     right: 2em;

@@ -419,7 +419,7 @@ a {
   opacity: 0.5;
   transition: opacity 0.2s;
   cursor: pointer;
-  background: url(/public/img/icons/chevron-right.svg) center center/30px 48px no-repeat;
+  background: url("../../public/img/icons/chevron-right.svg") center center/30px 48px no-repeat;
   right: 50px;
 }
 .lightbox__next:hover, .lightbox__next:focus {
@@ -433,7 +433,7 @@ a {
   opacity: 0.5;
   transition: opacity 0.2s;
   cursor: pointer;
-  background: url(/public/img/icons/chevron-left.svg) center center/30px 48px no-repeat;
+  background: url("../../public/img/icons/chevron-left.svg") center center/30px 48px no-repeat;
   left: 50px;
 }
 .lightbox__prev:hover, .lightbox__prev:focus {
@@ -447,7 +447,7 @@ a {
   opacity: 0.5;
   transition: opacity 0.2s;
   cursor: pointer;
-  background: url(/public/img/icons/cross.svg) center center/42px 42px no-repeat;
+  background: url("../../public/img/icons/cross.svg") center center/42px 42px no-repeat;
   top: 62px;
   right: 0;
   position: absolute;
@@ -477,7 +477,7 @@ a {
   width: 38px;
   height: 38px;
   opacity: 0.5;
-  background: url(/public/img/icons/loader.svg) center center no-repeat;
+  background: url("../../public/img/icons/loader.svg") center center no-repeat;
 }
 .lightbox.fadeOut {
   opacity: 0;
@@ -598,7 +598,7 @@ a {
   opacity: 0.5;
   transition: opacity 0.2s;
   cursor: pointer;
-  background: url(/public/img/icons/cross_white.svg) center center/42px 42px no-repeat;
+  background: url("../../public/img/icons/cross_white.svg") center center/42px 42px no-repeat;
   position: absolute;
   top: 2em;
   right: 2em;
