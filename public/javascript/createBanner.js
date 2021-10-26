@@ -5,13 +5,14 @@ function createBanner(photographer) {
   ).innerText = `${photographer.city}, ${photographer.country}`;
   document.querySelector(".banner__catchPhrase").innerText =
     photographer.tagline;
-  document
-    .querySelector(".banner__img")
-    .setAttribute(
-      "src",
-      `../public/img/SamplePhotos/Photographers_ID_Photos/low/${photographer.portrait}`
-    );
-  document.querySelector(".banner__img").setAttribute("alt", photographer.name);
+  var bannerImg = document.createElement("img");
+  bannerImg.className = "banner__img";
+  bannerImg.setAttribute(
+    "src",
+    `../public/img/SamplePhotos/Photographers_ID_Photos/low/${photographer.portrait}`
+  );
+  bannerImg.setAttribute("alt", photographer.name);
+  document.querySelector(".banner__aside").appendChild(bannerImg);
   photographer.tags.forEach(function (tag) {
     document.querySelector(".banner__list").appendChild(createTagsList(tag));
   });

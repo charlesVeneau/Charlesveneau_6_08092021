@@ -29,7 +29,7 @@ function createCardLink(element) {
     "src",
     `./public/img/SamplePhotos/Photographers_ID_Photos/low/${element.portrait}`
   );
-  cardImg.setAttribute("alt", "");
+  cardImg.setAttribute("alt", "element.name");
   cardLink.appendChild(cardImg);
 
   var cardTitle = document.createElement("h2");

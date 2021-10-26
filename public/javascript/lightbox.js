@@ -1,10 +1,16 @@
 class Lightbox {
   static init() {
     const links = Array.from(document.querySelectorAll(".gallery__link"));
-    const images = links.map((link) => link.getAttribute("href"));
+    //const images = links.map((link) => link.getAttribute("href"));
+    // const images = links
+    //   .filter((link) => !link.parentNode.classList.contains("isHidden"))
+    //   .map((link) => link.getAttribute("href"));
     const titles = links.map((link) => link.getAttribute("data-title"));
-    links.forEach((link) =>
+    links.forEach((link) => {
       link.addEventListener("click", (e) => {
+        const images = links
+          .filter((link) => !link.parentNode.classList.contains("isHidden"))
+          .map((link) => link.getAttribute("href"));
         e.preventDefault();
         new Lightbox(
           e.currentTarget.getAttribute("href"),
@@ -12,8 +18,8 @@ class Lightbox {
           e.currentTarget.getAttribute("data-title"),
           titles
         );
-      })
-    );
+      });
+    });
   }
   constructor(url, images, title, titles) {
     this.element = this.buildDOM();
@@ -22,8 +28,14 @@ class Lightbox {
     this.loadMedia(url, title);
     this.onKeyUp = this.onKeyUp.bind(this);
     document.body.appendChild(this.element);
+    document.querySelector("#content").setAttribute("aria-hidden", "true");
+    document.querySelector(".lightbox__close").focus();
     document.addEventListener("keyup", this.onKeyUp);
   }
+
+  // filterImages(links) {
+  //   return links.filter((link) => !link.parentNode.classList.contains("isHidden")).map((link) => link.getAttribute("href"))
+  // }
 
   loadMedia(url, title) {
     this.url = null;
@@ -76,6 +88,7 @@ class Lightbox {
       this.element.remove();
     }, 500);
     document.removeEventListener("keyup", this.onKeyUp);
+    document.querySelector("#content").setAttribute("aria-hidden", "false");
   }
 
   next(e) {
@@ -100,12 +113,15 @@ class Lightbox {
     const dom = document.createElement("section");
     dom.classList.add("lightbox");
     dom.setAttribute("aria-label", "image closeup view");
-    dom.innerHTML = `<dialog class="lightbox__container" open>
+    dom.setAttribute("aria-hidden", "false");
+    dom.setAttribute("aria-describedby", "modalDesciption");
+    dom.innerHTML = `<dialog class="lightbox__container" open aria-label="image closeup view">
         <button class="lightbox__close">Fermer</button>
         <button class="lightbox__prev">Précedent</button>
         <div class="lightbox__media">
         </div>
         <button class="lightbox__next">Suivant</button>
+        <p class="sr-only" id="modalDescription">This is a modal window which overlay the main content of the page. You can control it with the left and right arrows or close it with the escape key.</p>
       </dialog>`;
     dom
       .querySelector(".lightbox__close")
@@ -122,16 +138,3 @@ class Lightbox {
 }
 
 export { Lightbox };
-
-/*
-    <section class="lightbox">
-      <article class="lightbox__container">
-        <button class="lightbox__close">Fermer</button>
-        <button class="lightbox__prev">Précedent</button>
-        <button class="lightbox__next">Suivant</button>
-        <div class="lightbox__img">
-          <img src="/public/img/SamplePhotos/Mimi/Animals_Rainbow.jpg" alt="" />
-        </div>
-      </article>
-    </section>
-*/

@@ -39,6 +39,8 @@ class ContactForm {
   buildForm(name) {
     const form = document.createElement("section");
     form.classList.add("form");
+    form.setAttribute("aria-hidden", "false");
+    form.setAttribute("aria-describedby", "modalDesciption");
     form.innerHTML = `<dialog class="form__container" open>
     <button class="form__close">
       <span class="sr-only">fermer</span>
@@ -54,6 +56,7 @@ class ContactForm {
         id="firstname"
         class="form__input"
         required
+        autoFocus
       />
       <label for="lastname" class="form__label">
         Nom
@@ -83,6 +86,7 @@ class ContactForm {
         Envoyer
       </button>
     </form>
+    <p class="sr-only" id="modalDescription">This is a contact form which overlay the main content of the page. You can close it with the escape key.</p>
   </dialog>`;
     form
       .querySelector(".form__close")
