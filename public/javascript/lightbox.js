@@ -1,10 +1,6 @@
 class Lightbox {
   static init() {
     const links = Array.from(document.querySelectorAll(".gallery__link"));
-    //const images = links.map((link) => link.getAttribute("href"));
-    // const images = links
-    //   .filter((link) => !link.parentNode.classList.contains("isHidden"))
-    //   .map((link) => link.getAttribute("href"));
     const titles = links.map((link) => link.getAttribute("data-title"));
     links.forEach((link) => {
       link.addEventListener("click", (e) => {
@@ -32,10 +28,6 @@ class Lightbox {
     document.querySelector(".lightbox__close").focus();
     document.addEventListener("keyup", this.onKeyUp);
   }
-
-  // filterImages(links) {
-  //   return links.filter((link) => !link.parentNode.classList.contains("isHidden")).map((link) => link.getAttribute("href"))
-  // }
 
   loadMedia(url, title) {
     this.url = null;

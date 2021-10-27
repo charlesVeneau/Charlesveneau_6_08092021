@@ -26,14 +26,31 @@ class ContactForm {
   }
 
   submit(e) {
-    // e.preventDefault();
+    e.preventDefault();
     const inputs = this.element.querySelectorAll(".form__input");
+    const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    let success = 0;
     inputs.forEach((input) => {
-      console.log(`${input.id} : ${input.value}`);
+      if (
+        (input.id === "firstname" || input.id === "lastname") &&
+        input.value.trim().length < 2
+      )
+        input.classList.add("error");
+      else if (input.id === "email" && !emailRegex.test(input.value.trim()))
+        input.classList.add("error");
+      else if (input.id === "textarea" && input.value.trim().length < 10)
+        input.classList.add("error");
+      else {
+        ++success;
+        input.classList.remove("error");
+      }
     });
-    const message = this.element.querySelector(".form__textarea");
-    console.log(`message: ${message.value}`);
-    // this.close(e);
+    if (success >= 4) {
+      inputs.forEach((input) => {
+        console.log(`${input.id} : ${input.value}`);
+      });
+      this.close(e);
+    }
   }
 
   buildForm(name) {
@@ -81,7 +98,7 @@ class ContactForm {
       <label for="message" class="form__label">
         Votre message
       </label>
-      <textarea required class="form__textarea" rows="4"></textarea>
+      <textarea required class="form__input" id="textarea" rows="4"></textarea>
       <button type="submit" class="form__btn">
         Envoyer
       </button>

@@ -1,4 +1,4 @@
-.filter {
+.orderBy {
   margin: 1em 0;
   &__title {
     font-weight: bold;
@@ -7,7 +7,7 @@
   }
 }
 
-#filter__box {
+#orderBy__box {
   background-color: $color-secondary;
   border: none;
   color: #fff;
