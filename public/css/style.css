@@ -54,16 +54,13 @@ a {
   text-decoration: none;
 }
 
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
+select {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+select::-ms-expand {
+  display: none;
 }
 
 .header {
@@ -425,6 +422,10 @@ a {
 .lightbox__next:hover, .lightbox__next:focus {
   opacity: 1;
 }
+.lightbox__next:focus {
+  border: 2px solid #901c1c;
+  border-radius: 5px;
+}
 .lightbox__prev {
   border: none;
   width: 100px;
@@ -438,6 +439,10 @@ a {
 }
 .lightbox__prev:hover, .lightbox__prev:focus {
   opacity: 1;
+}
+.lightbox__prev:focus {
+  border: 2px solid #901c1c;
+  border-radius: 5px;
 }
 .lightbox__close {
   border: none;
@@ -455,6 +460,10 @@ a {
 }
 .lightbox__close:hover, .lightbox__close:focus {
   opacity: 1;
+}
+.lightbox__close:focus {
+  border: 2px solid #901c1c;
+  border-radius: 5px;
 }
 .lightbox__media {
   display: flex;
@@ -557,6 +566,15 @@ a {
   font-size: 1em;
   padding: 1em;
   border-radius: 5px;
+  position: relative;
+}
+#orderBy__box::after {
+  content: '<i class="fas fa-chevron-down"></i>';
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 1em;
+  width: 1em;
 }
 
 .form {
@@ -592,19 +610,24 @@ a {
 }
 .form__close {
   border: none;
-  width: 45px;
-  height: 45px;
+  width: 50px;
+  height: 50px;
   text-indent: -9999px;
   opacity: 0.5;
   transition: opacity 0.2s;
   cursor: pointer;
-  background: url("../../public/img/icons/cross_white.svg") center center/42px 42px no-repeat;
+  background: url("../../public/img/icons/cross_white.svg") center center/38px 38px no-repeat;
   position: absolute;
   top: 2em;
   right: 2em;
+  padding: 10px;
 }
 .form__close:hover, .form__close:focus {
   opacity: 1;
+}
+.form__close:focus {
+  border: 2px solid #901c1c;
+  border-radius: 5px;
 }
 @media screen and (max-width: 767px) {
   .form__close {
@@ -654,6 +677,13 @@ a {
   -webkit-animation: horWiggle 0.5s ease-in-out;
           animation: horWiggle 0.5s ease-in-out;
 }
+.form__small {
+  color: #901c1c;
+  display: block;
+}
+.form__small.isHidden {
+  display: none;
+}
 .form__btn {
   border-radius: 5px;
   background-color: #901c1c;
@@ -670,6 +700,10 @@ a {
 .form__btn:hover, .form__btn:focus {
   background-color: #db8876;
   color: #000;
+}
+.form__btn:focus {
+  border: 2px solid #901c1c;
+  border-radius: 5px;
 }
 @media screen and (max-width: 767px) {
   .form__btn {
@@ -749,6 +783,18 @@ a {
   flex-wrap: wrap;
   justify-content: center;
   gap: 5%;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .content__title {

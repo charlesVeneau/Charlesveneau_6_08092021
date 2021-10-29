@@ -26,12 +26,13 @@
     }
   }
   &__close {
-    @include lightbox-btn(45px, 45px);
+    @include lightbox-btn(50px, 50px);
     background: url("../../public/img/icons/cross_white.svg") center center /
-      42px 42px no-repeat;
+      38px 38px no-repeat;
     position: absolute;
     top: 2em;
     right: 2em;
+    padding: 10px;
     @media screen and (max-width: $mobile) {
       background-size: 18px;
     }
@@ -75,11 +76,21 @@
       animation: horWiggle 0.5s ease-in-out;
     }
   }
+  &__small {
+    color: $color-secondary;
+    display: block;
+    &.isHidden {
+      display: none;
+    }
+  }
   &__btn {
     @include btn-primary(1.5em, 1em);
     margin-top: 1.3em;
-
     width: 170px;
+    &:focus {
+      border: 2px solid $color-secondary;
+      border-radius: 5px;
+    }
     @media screen and (max-width: $mobile) {
       margin: 1.3em auto;
       padding: 0.375em 1.25em;

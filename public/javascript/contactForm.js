@@ -13,6 +13,7 @@ class ContactForm {
     this.onKeyUp = this.onKeyUp.bind(this);
     document.body.appendChild(this.element);
     document.addEventListener("keyup", this.onKeyUp);
+    document.querySelector(".form__close").focus();
   }
 
   onKeyUp(e) {
@@ -34,15 +35,19 @@ class ContactForm {
       if (
         (input.id === "firstname" || input.id === "lastname") &&
         input.value.trim().length < 2
-      )
+      ) {
         input.classList.add("error");
-      else if (input.id === "email" && !emailRegex.test(input.value.trim()))
+        input.nextElementSibling.classList.remove("isHidden");
+      } else if (input.id === "email" && !emailRegex.test(input.value.trim())) {
         input.classList.add("error");
-      else if (input.id === "textarea" && input.value.trim().length < 10)
+        input.nextElementSibling.classList.remove("isHidden");
+      } else if (input.id === "message" && input.value.trim().length < 10) {
         input.classList.add("error");
-      else {
+        input.nextElementSibling.classList.remove("isHidden");
+      } else {
         ++success;
         input.classList.remove("error");
+        input.nextElementSibling.classList.add("isHidden");
       }
     });
     if (success >= 4) {
@@ -73,8 +78,9 @@ class ContactForm {
         id="firstname"
         class="form__input"
         required
-        autoFocus
+        
       />
+      <small class="form__small isHidden">Veuillez entrer au moins 2 lettres</small>
       <label for="lastname" class="form__label">
         Nom
       </label>
@@ -85,6 +91,7 @@ class ContactForm {
         class="form__input"
         required
       />
+      <small class="form__small isHidden">Veuillez entrer au moins 2 lettres</small>
       <label for="email" class="form__label">
         Email
       </label>
@@ -95,10 +102,12 @@ class ContactForm {
         class="form__input"
         required
       />
+      <small class="form__small isHidden">Veuillez entrer une adresse email valide</small>
       <label for="message" class="form__label">
         Votre message
       </label>
-      <textarea required class="form__input" id="textarea" rows="4"></textarea>
+      <textarea required class="form__input" id="message" rows="4"></textarea>
+      <small class="form__small isHidden">Vous ne pouvez pas envoyer de message vide</small>
       <button type="submit" class="form__btn">
         Envoyer
       </button>

@@ -3,17 +3,17 @@ import { Lightbox } from "../../public/javascript/lightbox.js";
 import { ContactForm } from "../../public/javascript/contactForm.js";
 //retrieve the id of the photagrapher that is stored in the URL params
 const urlId = new URLSearchParams(window.location.search).get("id");
-//Create a variable to store the photographer's information
-var photographer;
-var photographerContent;
+//Create a constiable to store the photographer's information
+let photographer;
+let photographerContent;
 
 fetch("../assets/fishEyeData.json")
-  .then(function (response) {
+  .then((response) => {
     if (response.ok) {
       return response.json();
     }
   })
-  .then(function (value) {
+  .then((value) => {
     photographer = value.photographers.filter(function (photographer) {
       return photographer.id == urlId;
     })[0];
@@ -29,16 +29,16 @@ fetch("../assets/fishEyeData.json")
     getRate(photographer);
     ContactForm.init();
   })
-  .catch(function (error) {
+  .catch((error) => {
     console.log(error);
   });
 
 function createGallery(medias) {
-  var firstName = photographer.name.split(" ", 1)[0];
-  var gallery = document.querySelector(".gallery");
+  const firstName = photographer.name.split(" ", 1)[0];
+  const gallery = document.querySelector(".gallery");
   gallery.innerHTML = "";
   medias.forEach((media) => {
-    var card = document.createElement("article");
+    const card = document.createElement("article");
     card.className = "gallery__card";
     card.setAttribute("data-id", media.id);
     card.setAttribute("data-date", media.date.replaceAll("-", ""));
@@ -46,12 +46,12 @@ function createGallery(medias) {
       card.setAttribute("data-tags", tag);
     });
 
-    var linkImg = document.createElement("a");
+    const linkImg = document.createElement("a");
     linkImg.className = "gallery__link";
     linkImg.setAttribute("data-title", media.title);
 
     if (media.image) {
-      var cardImg = document.createElement("img");
+      const cardImg = document.createElement("img");
 
       cardImg.className = "gallery__img";
       cardImg.setAttribute(
@@ -67,9 +67,9 @@ function createGallery(medias) {
       linkImg.appendChild(cardImg);
       card.appendChild(linkImg);
     } else if (media.video) {
-      var cardVideo = document.createElement("video");
+      const cardVideo = document.createElement("video");
       cardVideo.className = "gallery__img";
-      var videoSrc = document.createElement("source");
+      const videoSrc = document.createElement("source");
       videoSrc.setAttribute(
         "src",
         `../public/img/SamplePhotos/${firstName}/${media.video}`
@@ -85,23 +85,23 @@ function createGallery(medias) {
       card.appendChild(linkImg);
     }
 
-    var cardInfo = document.createElement("div");
+    const cardInfo = document.createElement("div");
     cardInfo.className = "gallery__info";
     // cardInfo.id = media.id;
 
-    var cardTitle = document.createElement("p");
+    const cardTitle = document.createElement("p");
     cardTitle.className = "gallery__title";
     cardTitle.innerText = `${media.title}`;
 
     cardInfo.appendChild(cardTitle);
 
-    var cardLikes = document.createElement("p");
+    const cardLikes = document.createElement("p");
     cardLikes.className = "gallery__likes";
     cardLikes.insertAdjacentHTML(
       "beforeend",
       `<span class="likes__num">${getLikes(
         media
-      )}</span><button class="likes__btn"><i class='fas fa-heart' arial-label="likes"></i></button>`
+      )}</span><button class="likes__btn"><span class="sr-only">likes</span><i class='fas fa-heart' aria-label="likes"></i></button>`
     );
 
     cardInfo.appendChild(cardLikes);
@@ -119,18 +119,21 @@ function getLikes(content) {
 }
 
 function getTotalLikes() {
-  var likesElt = document.querySelector(".tab__likes");
-  var likes = photographerContent.reduce((total, elt) => total + elt.likes, 0);
+  const likesElt = document.querySelector(".tab__likes");
+  const likes = photographerContent.reduce(
+    (total, elt) => total + elt.likes,
+    0
+  );
   likesElt.innerText = likes;
 }
 
 function getRate(photographer) {
-  var rateElt = document.querySelector(".tab__rate");
+  const rateElt = document.querySelector(".tab__rate");
   rateElt.innerText = photographer.price;
 }
 
 function likesListener() {
-  var likesBtn = document.querySelectorAll(".likes__btn");
+  const likesBtn = document.querySelectorAll(".likes__btn");
   likesBtn.forEach((elt) => {
     elt.addEventListener("click", function () {
       let photoId = parseInt(

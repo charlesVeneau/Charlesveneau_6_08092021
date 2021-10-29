@@ -36,4 +36,8 @@
   &:focus {
     opacity: 1;
   }
+  &:focus {
+    border: 2px solid $color-secondary;
+    border-radius: 5px;
+  }
 }

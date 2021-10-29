@@ -3,7 +3,7 @@ function createCards(elements) {
   var sectionElt = document.querySelector(".section");
   //loop through all the photographers to create a card
   sectionElt.innerHTML = "";
-  elements.forEach(function (element) {
+  elements.forEach((element) => {
     var card = document.createElement("article");
     card.className = "card";
     card.setAttribute("data-id", element.id);
@@ -29,7 +29,7 @@ function createCardLink(element) {
     "src",
     `./public/img/SamplePhotos/Photographers_ID_Photos/low/${element.portrait}`
   );
-  cardImg.setAttribute("alt", "element.name");
+  cardImg.setAttribute("alt", element.name);
   cardLink.appendChild(cardImg);
 
   var cardTitle = document.createElement("h2");

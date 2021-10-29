@@ -14,4 +14,13 @@
   font-size: 1em;
   padding: 1em;
   border-radius: 5px;
+  position: relative;
+  &::after {
+    content: '<i class="fas fa-chevron-down"></i>';
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 1em;
+    width: 1em;
+  }
 }

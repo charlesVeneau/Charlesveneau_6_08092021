@@ -42,6 +42,7 @@ class Lightbox {
     if (url.indexOf(".jpg") > -1) {
       const img = new Image();
       img.classList.add("lightbox__img");
+      img.setAttribute("alt", "title");
       img.onload = function () {
         media.removeChild(loader);
         media.appendChild(img);
