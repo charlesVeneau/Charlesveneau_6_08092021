@@ -63,13 +63,13 @@ class ContactForm {
     form.classList.add("form");
     form.setAttribute("aria-hidden", "false");
     form.setAttribute("aria-describedby", "modalDesciption");
-    form.innerHTML = `<dialog class="form__container" open>
-    <button class="form__close">
+    form.innerHTML = `<dialog class="form__container" aria-labelledby="contactMe" open>
+    <button class="form__close" aria-label="Close Contact form">
       <span class="sr-only">fermer</span>
     </button>
-    <h1 class="form__title">Contactez-moi<br>${name}</h1>
+    <h1 class="form__title" id="contactMe">Contactez-moi<br>${name}</h1>
     <form action="profil.html" class="form__elt">
-      <label for="firstname" class="form__label">
+      <label for="firstname" class="form__label" id="firstName">
         Prénom
       </label>
       <input
@@ -77,11 +77,11 @@ class ContactForm {
         name="firstname"
         id="firstname"
         class="form__input"
+        aria-labelledby="firstName"
         required
-        
       />
       <small class="form__small isHidden">Veuillez entrer au moins 2 lettres</small>
-      <label for="lastname" class="form__label">
+      <label for="lastname" class="form__label" id="lastName">
         Nom
       </label>
       <input
@@ -89,10 +89,11 @@ class ContactForm {
         name="lastname"
         id="lastname"
         class="form__input"
+        aria-labelledby="lastName"
         required
       />
       <small class="form__small isHidden">Veuillez entrer au moins 2 lettres</small>
-      <label for="email" class="form__label">
+      <label for="email" class="form__label" id="yourEmail">
         Email
       </label>
       <input
@@ -100,15 +101,16 @@ class ContactForm {
         name="email"
         id="email"
         class="form__input"
+        aria-labelledby="yourEmail"
         required
       />
       <small class="form__small isHidden">Veuillez entrer une adresse email valide</small>
-      <label for="message" class="form__label">
+      <label for="message" class="form__label" id="yourMessage">
         Votre message
       </label>
-      <textarea required class="form__input" id="message" rows="4"></textarea>
+      <textarea required class="form__input" id="message" rows="4" aria-labelledby="yourMessage"></textarea>
       <small class="form__small isHidden">Vous ne pouvez pas envoyer de message vide</small>
-      <button type="submit" class="form__btn">
+      <button type="submit" class="form__btn" aria-label="Send">
         Envoyer
       </button>
     </form>

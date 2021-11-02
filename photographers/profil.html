@@ -27,7 +27,9 @@
     <main id="content" aria-hidden="false">
       <section class="banner">
         <aside class="banner__aside">
-          <button class="banner__btn">Contactez-moi</button>
+          <button class="banner__btn" aria-label="Contact Me">
+            Contactez-moi
+          </button>
         </aside>
         <article class="banner__infos">
           <h1 class="banner__title"></h1>
@@ -37,8 +39,10 @@
         </article>
       </section>
       <section class="orderBy">
-        <label for="orderBy__box" class="orderBy__title">Trier par</label>
-        <select name="orderBy__box" id="orderBy__box">
+        <label for="orderBy__box" class="orderBy__title" id="orderBy"
+          >Trier par</label
+        >
+        <select name="orderBy__box" id="orderBy__box" aria-labelledby="orderBy">
           <option value="popularity" class="orderBy__option">Popularité</option>
           <option value="date" class="orderBy__option">Date</option>
           <option value="title" class="orderBy__option">Titre</option>

@@ -76,7 +76,7 @@ function createCardTagsList(list) {
 
     var srOnly = document.createElement("span");
     srOnly.className = "sr-only";
-    srOnly.innerText = `${tag}`;
+    srOnly.innerText = `Tag ${tag}`;
 
     var button = document.createElement("button");
     button.className = "btn";

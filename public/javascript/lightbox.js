@@ -42,7 +42,7 @@ class Lightbox {
     if (url.indexOf(".jpg") > -1) {
       const img = new Image();
       img.classList.add("lightbox__img");
-      img.setAttribute("alt", "title");
+      img.setAttribute("alt", title);
       img.onload = function () {
         media.removeChild(loader);
         media.appendChild(img);
@@ -109,11 +109,11 @@ class Lightbox {
     dom.setAttribute("aria-hidden", "false");
     dom.setAttribute("aria-describedby", "modalDesciption");
     dom.innerHTML = `<dialog class="lightbox__container" open aria-label="image closeup view">
-        <button class="lightbox__close">Fermer</button>
-        <button class="lightbox__prev">Précedent</button>
+        <button class="lightbox__close" aria-label="Close dialog">Fermer</button>
+        <button class="lightbox__prev" aria-label="Previous image">Précedent</button>
         <div class="lightbox__media">
         </div>
-        <button class="lightbox__next">Suivant</button>
+        <button class="lightbox__next" aria-label="Next image">Suivant</button>
         <p class="sr-only" id="modalDescription">This is a modal window which overlay the main content of the page. You can control it with the left and right arrows or close it with the escape key.</p>
       </dialog>`;
     dom

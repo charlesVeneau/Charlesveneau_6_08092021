@@ -661,13 +661,14 @@ select::-ms-expand {
   font-size: 1.3em;
   padding: 0.4em;
 }
-.form__input#textarea {
+.form__input#message {
   border-radius: 5px;
   border: none;
   width: 100%;
   font-size: 1.3em;
+  resize: none;
 }
-.form__input#textarea.error {
+.form__input#message.error {
   border: 2px solid #901c1c;
   -webkit-animation: horWiggle 0.5s ease-in-out;
           animation: horWiggle 0.5s ease-in-out;

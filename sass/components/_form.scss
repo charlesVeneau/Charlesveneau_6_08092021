@@ -61,11 +61,12 @@
     width: 100%;
     font-size: 1.3em;
     padding: 0.4em;
-    &#textarea {
+    &#message {
       border-radius: 5px;
       border: none;
       width: 100%;
       font-size: 1.3em;
+      resize: none;
       &.error {
         border: 2px solid $color-secondary;
         animation: horWiggle 0.5s ease-in-out;
