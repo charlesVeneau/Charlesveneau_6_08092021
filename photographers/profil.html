@@ -42,11 +42,20 @@
         <label for="orderBy__box" class="orderBy__title" id="orderBy"
           >Trier par</label
         >
-        <select name="orderBy__box" id="orderBy__box" aria-labelledby="orderBy">
-          <option value="popularity" class="orderBy__option">Popularité</option>
-          <option value="date" class="orderBy__option">Date</option>
-          <option value="title" class="orderBy__option">Titre</option>
-        </select>
+        <div class="orderBy__content">
+          <select
+            name="orderBy__box"
+            id="orderBy__box"
+            aria-labelledby="orderBy"
+          >
+            <option value="popularity" class="orderBy__option">
+              Popularité
+            </option>
+            <option value="date" class="orderBy__option">Date</option>
+            <option value="title" class="orderBy__option">Titre</option>
+          </select>
+          <i class="fas fa-chevron-down"></i>
+        </div>
       </section>
       <section class="gallery"></section>
     </main>

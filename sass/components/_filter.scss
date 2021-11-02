@@ -5,6 +5,18 @@
     color: #000;
     margin-right: 1em;
   }
+  &__content {
+    display: inline-block;
+    position: relative;
+  }
+}
+
+.fa-chevron-down {
+  color: white;
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
 }
 
 #orderBy__box {
@@ -14,13 +26,5 @@
   font-size: 1em;
   padding: 1em;
   border-radius: 5px;
-  position: relative;
-  &::after {
-    content: '<i class="fas fa-chevron-down"></i>';
-    position: absolute;
-    top: 0;
-    right: 0;
-    height: 1em;
-    width: 1em;
-  }
+  width: 140px;
 }
