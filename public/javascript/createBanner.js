@@ -5,7 +5,7 @@ function createBanner(photographer) {
   ).innerText = `${photographer.city}, ${photographer.country}`;
   document.querySelector(".banner__catchPhrase").innerText =
     photographer.tagline;
-  var bannerImg = document.createElement("img");
+  let bannerImg = document.createElement("img");
   bannerImg.className = "banner__img";
   bannerImg.setAttribute(
     "src",
@@ -13,20 +13,20 @@ function createBanner(photographer) {
   );
   bannerImg.setAttribute("alt", photographer.name);
   document.querySelector(".banner__aside").appendChild(bannerImg);
-  photographer.tags.forEach(function (tag) {
+  photographer.tags.forEach((tag) => {
     document.querySelector(".banner__list").appendChild(createTagsList(tag));
   });
 }
 
 function createTagsList(tag) {
-  var listElt = document.createElement("li");
+  let listElt = document.createElement("li");
   listElt.className = "banner__listElt";
 
-  var srOnly = document.createElement("span");
+  let srOnly = document.createElement("span");
   srOnly.className = "sr-only";
   srOnly.innerText = `${tag}`;
 
-  var button = document.createElement("button");
+  let button = document.createElement("button");
   button.className = "btn";
   button.setAttribute("type", "button");
 

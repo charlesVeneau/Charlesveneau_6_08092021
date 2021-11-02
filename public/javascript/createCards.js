@@ -1,10 +1,10 @@
 function createCards(elements) {
   //Get the DOM content element
-  var sectionElt = document.querySelector(".section");
+  let sectionElt = document.querySelector(".section");
   //loop through all the photographers to create a card
   sectionElt.innerHTML = "";
   elements.forEach((element) => {
-    var card = document.createElement("article");
+    let card = document.createElement("article");
     card.className = "card";
     card.setAttribute("data-id", element.id);
     card.appendChild(createCardLink(element));
@@ -18,12 +18,12 @@ function createCards(elements) {
 // 1. createCardLink
 
 function createCardLink(element) {
-  var cardLink = document.createElement("a");
+  let cardLink = document.createElement("a");
   cardLink.className = "card__link";
   cardLink.setAttribute("href", `./photographers/profil.html?id=${element.id}`);
   cardLink.setAttribute("aria-label", `${element.name}`);
 
-  var cardImg = document.createElement("img");
+  let cardImg = document.createElement("img");
   cardImg.className = "card__img";
   cardImg.setAttribute(
     "src",
@@ -32,7 +32,7 @@ function createCardLink(element) {
   cardImg.setAttribute("alt", element.name);
   cardLink.appendChild(cardImg);
 
-  var cardTitle = document.createElement("h2");
+  let cardTitle = document.createElement("h2");
   cardTitle.className = "card__title";
   cardTitle.innerText = element.name;
   cardLink.appendChild(cardTitle);
@@ -43,20 +43,20 @@ function createCardLink(element) {
 // 2. create card info
 
 function createCardInfo(element) {
-  var cardInfo = document.createElement("div");
+  let cardInfo = document.createElement("div");
   cardInfo.className = "card__info";
 
-  var cardLocation = document.createElement("p");
+  let cardLocation = document.createElement("p");
   cardLocation.className = "card__location";
   cardLocation.innerText = `${element.city}, ${element.country}`;
   cardInfo.appendChild(cardLocation);
 
-  var cardCatchPhrase = document.createElement("p");
+  let cardCatchPhrase = document.createElement("p");
   cardCatchPhrase.className = "card__catchPhrase";
   cardCatchPhrase.innerText = `${element.tagline}`;
   cardInfo.appendChild(cardCatchPhrase);
 
-  var cardPrice = document.createElement("p");
+  let cardPrice = document.createElement("p");
   cardPrice.className = "card__dailyRate";
   cardPrice.innerText = `${element.price}€/jour`;
   cardInfo.appendChild(cardPrice);
@@ -67,18 +67,18 @@ function createCardInfo(element) {
 // 3. create the tag list
 
 function createCardTagsList(list) {
-  var cardList = document.createElement("ul");
+  let cardList = document.createElement("ul");
   cardList.className = "card__list";
 
-  list.forEach(function (tag) {
-    var listElt = document.createElement("li");
+  list.forEach((tag) => {
+    let listElt = document.createElement("li");
     listElt.className = "card__listElt";
 
-    var srOnly = document.createElement("span");
+    let srOnly = document.createElement("span");
     srOnly.className = "sr-only";
     srOnly.innerText = `Tag ${tag}`;
 
-    var button = document.createElement("button");
+    let button = document.createElement("button");
     button.className = "btn";
     button.setAttribute("type", "button");
 
