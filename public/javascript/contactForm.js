@@ -29,18 +29,25 @@ class ContactForm {
   submit(e) {
     e.preventDefault();
     const inputs = this.element.querySelectorAll(".form__input");
+    /*this regex will check the first character is a word character for 1 and unlimited time,then will check if or not the next character is . or - and if so
+    check for one or unlimited word character. Next check for a @, then repeat the word character check, the separator . or -, word character.
+    The . after the domain then between 2 and 3 character for the domain extension*/
     const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     let success = 0;
+    // rules to check every input and show the error if needded
     inputs.forEach((input) => {
+      /* firstname and lastname should have a least 2 character*/
       if (
         (input.id === "firstname" || input.id === "lastname") &&
         input.value.trim().length < 2
       ) {
         input.classList.add("error");
         input.nextElementSibling.classList.remove("isHidden");
+        /* the email should check the regex */
       } else if (input.id === "email" && !emailRegex.test(input.value.trim())) {
         input.classList.add("error");
         input.nextElementSibling.classList.remove("isHidden");
+        /*The message should at least have 10 characters*/
       } else if (input.id === "message" && input.value.trim().length < 10) {
         input.classList.add("error");
         input.nextElementSibling.classList.remove("isHidden");
@@ -50,6 +57,7 @@ class ContactForm {
         input.nextElementSibling.classList.add("isHidden");
       }
     });
+    /* by incrementing a wariable, we can trigger when all the input are valid and set the next actions*/
     if (success >= 4) {
       inputs.forEach((input) => {
         console.log(`${input.id} : ${input.value}`);

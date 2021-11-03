@@ -1,13 +1,17 @@
 class Lightbox {
   static init() {
     const links = Array.from(document.querySelectorAll(".gallery__link"));
-    const titles = links.map((link) => link.getAttribute("data-title"));
+
     links.forEach((link) => {
       link.addEventListener("click", (e) => {
         const images = links
           .filter((link) => !link.parentNode.classList.contains("isHidden"))
           .map((link) => link.getAttribute("href"));
+        const titles = links
+          .filter((link) => !link.parentNode.classList.contains("isHidden"))
+          .map((link) => link.getAttribute("data-title"));
         e.preventDefault();
+        /* parsing several argument to the constructor as it need the current image and the other, and only show the ones visible by the user */
         new Lightbox(
           e.currentTarget.getAttribute("href"),
           images,
@@ -39,6 +43,7 @@ class Lightbox {
     mediaTitle.innerText = title;
     media.innerHTML = "";
     media.appendChild(loader);
+    //by checking the end of the media name, I can create the correct html tag for the content
     if (url.indexOf(".jpg") > -1) {
       const img = new Image();
       img.classList.add("lightbox__img");
@@ -80,6 +85,7 @@ class Lightbox {
     window.setTimeout(() => {
       this.element.remove();
     }, 500);
+    /* the keyslistener should be removed with the element in order to don't trigger them outside the lightbox  and create conflict with the new lightbox*/
     document.removeEventListener("keyup", this.onKeyUp);
     document.querySelector("#content").setAttribute("aria-hidden", "false");
   }

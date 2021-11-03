@@ -15,12 +15,12 @@ fetch("../assets/fishEyeData.json")
     }
   })
   .then((value) => {
-    photographer = value.photographers.filter(function (photographer) {
-      return photographer.id == urlId;
-    })[0];
-    photographerContent = value.media.filter(function (media) {
-      return media.photographerId == urlId;
-    });
+    photographer = value.photographers.filter(
+      (photographer) => photographer.id == urlId
+    )[0];
+    photographerContent = value.media.filter(
+      (media) => media.photographerId == urlId
+    );
     //put the photographer name in the head title
     document.title += ` | ${photographer.name}`;
     createBanner(photographer);
@@ -35,6 +35,7 @@ fetch("../assets/fishEyeData.json")
   });
 
 function createGallery(medias) {
+  //the first name is used in the Card class to set the correct medias path
   const firstName = photographer.name.split(" ", 1)[0];
   const gallery = document.querySelector(".gallery");
   gallery.innerHTML = "";
@@ -45,11 +46,8 @@ function createGallery(medias) {
   Lightbox.init();
 }
 
-function getLikes(content) {
-  return content.likes;
-}
-
 function getTotalLikes() {
+  //using the reduce method help to get more efficient results with a simple object entry
   const likesElt = document.querySelector(".tab__likes");
   const likes = photographerContent.reduce(
     (total, elt) => total + elt.likes,
@@ -73,6 +71,7 @@ function likesListener() {
       let photo = photographerContent.filter((photo) => {
         return photo.id === photoId;
       })[0];
+      //adding an entry to the local photo object to create a like state for each photo
       if (photo.isLiked) {
         photo.likes--;
         photo.isLiked = false;
@@ -80,7 +79,7 @@ function likesListener() {
         photo.likes++;
         photo.isLiked = true;
       }
-      this.parentNode.querySelector(".likes__num").innerText = getLikes(photo);
+      this.parentNode.querySelector(".likes__num").innerText = photo.likes;
       getTotalLikes();
     });
   });
@@ -125,16 +124,15 @@ orderByBox.addEventListener("change", function () {
 });
 
 function orderBy(value) {
+  //create a Array with the desired order and use this are to call the createGallery Method
   const content = Array.from(photographerContent);
   let ordered;
   if (value === "popularity") {
-    ordered = content.sort(function (a, b) {
-      return a.likes < b.likes ? 1 : -1;
-    });
+    ordered = content.sort((a, b) => (a.likes < b.likes ? 1 : -1));
   } else if (value === "date") {
-    ordered = content.sort(function (a, b) {
-      return a.date.replaceAll("-", "") < b.date.replaceAll("-", "") ? 1 : -1;
-    });
+    ordered = content.sort((a, b) =>
+      a.date.replaceAll("-", "") < b.date.replaceAll("-", "") ? 1 : -1
+    );
   } else if (value === "title") {
     ordered = content.sort((a, b) => a.title.localeCompare(b.title));
   }
