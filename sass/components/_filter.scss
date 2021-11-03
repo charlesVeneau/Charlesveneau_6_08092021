@@ -9,6 +9,9 @@
     display: inline-block;
     position: relative;
   }
+  @media screen and (max-width: $mobile) {
+    display: none;
+  }
 }
 
 .fa-chevron-down {
