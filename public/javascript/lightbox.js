@@ -122,6 +122,7 @@ class Lightbox {
         <button class="lightbox__next" aria-label="Next image">Suivant</button>
         <p class="sr-only" id="modalDescription">This is a modal window which overlay the main content of the page. You can control it with the left and right arrows or close it with the escape key.</p>
       </dialog>`;
+    //bind this is used to select the lightbox as an attribute in the close method
     dom
       .querySelector(".lightbox__close")
       .addEventListener("click", this.close.bind(this));
