@@ -44,11 +44,11 @@ class Lightbox {
     media.innerHTML = "";
     media.appendChild(loader);
     //by checking the end of the media name, I can create the correct html tag for the content
-    if (url.indexOf(".jpg") > -1) {
+    if (url.includes(".jpg")) {
       const img = new Image();
       img.classList.add("lightbox__img");
       img.setAttribute("alt", title);
-      img.onload = function () {
+      img.onload = () => {
         media.removeChild(loader);
         media.appendChild(img);
         media.appendChild(mediaTitle);
